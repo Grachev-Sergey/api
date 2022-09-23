@@ -41,5 +41,11 @@ export const updateUser = async (req: Request, res: Response) => {
 
 
 export const deleteUser = async (req: Request, res: Response) => {
+  const user = await userRepository.findOneBy({id: req.params.id});
 
+  if(!user) return res.status(404).json({massage: 'User not found'});
+
+  await userRepository.remove(user);
+
+  return res.status(204);
 };
