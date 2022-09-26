@@ -1,5 +1,5 @@
-import { app } from "./app";
-import { AppDataSource } from "./data-source";
+import { app } from "./db";
+import { AppDataSource } from "./db/data-source";
 
 async function main() {
     try {
