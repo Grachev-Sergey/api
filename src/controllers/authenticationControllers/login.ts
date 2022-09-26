@@ -17,7 +17,7 @@ export const login:Handler = async (req, res, next) => {
     const {email, password} = req.body;
     const user = await repositorys.userRepository.findOneBy({email});
     if (!user) {
-      throw customError(StatusCodes.BAD_REQUEST, USER_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }
 
     const validPass = bcrypt.compareSync(password, user.password);

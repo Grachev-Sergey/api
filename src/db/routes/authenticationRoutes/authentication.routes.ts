@@ -4,7 +4,7 @@ import * as express from 'express';
 
 const authenticationRouter = express.Router();
 
-authenticationRouter.post('/', registrationUser);
+authenticationRouter.post('/registration', registrationUser);
 authenticationRouter.post('/login', login);
 
 export {authenticationRouter};

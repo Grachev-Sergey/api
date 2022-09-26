@@ -5,5 +5,5 @@ export const responseError:ErrorRequestHandler = (err, req, res, next) => {
   if (err instanceof CustomError) {
     return res.status(err.localData.status).json(err.localData);
   }
-  next();
+  return res.status(500).json('some error');
 };

@@ -5,8 +5,8 @@ import * as express from 'express';
 
 const userRouter = express.Router();
 
-userRouter.get('/', getUsers);
-userRouter.put('/:id', updateUser);
-userRouter.delete('/:id', deleteUser);
+userRouter.get('/read', getUsers);
+userRouter.put('/update/:id', updateUser);
+userRouter.delete('/delete/:id', deleteUser);
 
 export {userRouter};
