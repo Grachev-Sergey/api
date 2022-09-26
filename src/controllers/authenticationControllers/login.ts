@@ -9,7 +9,7 @@ import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
 
 const generateToken = (id: number) => {
   const payload = {id}
-  return jwt.sign(payload, 'secret', {expiresIn: "12h"});
+  return jwt.sign(payload, 'secret', {expiresIn: "1h"});
 };
 
 export const login:Handler = async (req, res, next) => {

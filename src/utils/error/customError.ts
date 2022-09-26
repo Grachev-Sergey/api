@@ -7,7 +7,7 @@ export class CustomError extends Error{
 }
 
 export const customError = (status: number, message: string, payload?: any) => {
-  const error = new Error(message) as CustomError;
+  const error = new CustomError(message);
   error.localData = {
     message,
     status,
