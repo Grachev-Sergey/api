@@ -1,19 +1,24 @@
 import { Handler } from "express";
 import { StatusCodes } from "http-status-codes";
+import * as jwt from 'jsonwebtoken';
 import { customError } from "../../utils/error/customError";
 import { NOT_AUTHORIZED } from "../../utils/error/errorsText";
 import { responseError } from "./responseError";
-import * as jwt from 'jsonwebtoken';
+import { repositorys } from "../../utils/repository";
 
-export const tokenVerification:Handler = (req, res, next) => {
+export const tokenVerification:Handler = async (req, res, next) => {
   try {
-    const authHeader = req.headers['authorization']
-    const token = authHeader.split(' ')[1]
+    const authHeader = req.headers['authorization'];
+    const token = authHeader.split(' ')[1];
     if(!token) {
-      throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED)
+      throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
     }
-    jwt.verify(token, 'secret');
-    next()
+    const payload = jwt.verify(token, 'secret') as {id: number};
+    const existingUser = await repositorys.userRepository.findOneBy({id: payload.id});
+    if(!existingUser) {
+      throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
+    }
+    next();
   } catch (err) {
     responseError(err, req, res, next);
   }
