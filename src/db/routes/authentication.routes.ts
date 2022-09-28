@@ -3,7 +3,7 @@ import { login } from '../../controllers/authenticationControllers/login';
 import { registrationUser } from '../../controllers/authenticationControllers/registration';
 import { authorizationSchema } from '../../utils/schema/authorizationSchema';
 import { registrationSchema } from '../../utils/schema/registrationSchema';
-import { validationSchema } from '../middlewere/validationSchema';
+import { validationSchema } from '../middleware/validationSchema';
 
 const authenticationRouter = express.Router();
 

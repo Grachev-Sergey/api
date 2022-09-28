@@ -4,7 +4,7 @@ import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../utils/repository';
 import { customError } from '../../utils/error/customError';
-import { responseError } from '../../db/middlewere/responseError';
+import { responseError } from '../../db/middleware/responseError';
 import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
 
 const generateToken = (id: number) => {

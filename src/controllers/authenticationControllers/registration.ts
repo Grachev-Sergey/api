@@ -3,7 +3,7 @@ import * as jwt from 'jsonwebtoken';
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { EMAIL_USED } from '../../utils/error/errorsText';
-import { responseError } from '../../db/middlewere/responseError';
+import { responseError } from '../../db/middleware/responseError';
 import { User } from '../../db/entity/User';
 import { repositorys } from '../../utils/repository';
 import { customError } from '../../utils/error/customError';

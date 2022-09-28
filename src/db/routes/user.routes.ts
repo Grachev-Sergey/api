@@ -2,7 +2,7 @@ import * as express from 'express';
 import { deleteUser } from '../../controllers/userControllers/deleteUser';
 import { getUsers } from '../../controllers/userControllers/getUsers';
 import { updateUser } from '../../controllers/userControllers/updateUser';
-import { tokenVerification } from '../middlewere/tokenVerification';
+import { tokenVerification } from '../middleware/tokenVerification';
 
 const userRouter = express.Router();
 

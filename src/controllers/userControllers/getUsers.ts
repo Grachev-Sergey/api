@@ -1,6 +1,6 @@
 import { Handler } from 'express';
 import { repositorys } from '../../utils/repository';
-import { responseError } from '../../db/middlewere/responseError';
+import { responseError } from '../../db/middleware/responseError';
 
 
 export const getUsers:Handler = async (req, res, next) => {
