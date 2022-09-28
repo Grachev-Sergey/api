@@ -1,10 +1,8 @@
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { responseError } from '../../db/middleware/responseError';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND } from '../../utils/error/errorsText';
 import { repositorys } from '../../utils/repository';
-
 
 export const updateUser:Handler = async (req, res, next) => {
   try {
@@ -22,6 +20,6 @@ export const updateUser:Handler = async (req, res, next) => {
     await repositorys.userRepository.save(user);
     return res.json({massage: 'User data updated successfully'});
   } catch (err) {
-    responseError(err, req, res, next);
+    next(err);
   }
 };

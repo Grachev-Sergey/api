@@ -4,11 +4,10 @@ import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../utils/repository';
 import { customError } from '../../utils/error/customError';
-import { responseError } from '../../db/middleware/responseError';
 import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
 
 const generateToken = (id: number) => {
-  const payload = {id}
+  const payload = {id};
   return jwt.sign(payload, 'secret', {expiresIn: "1h"});
 };
 
@@ -28,6 +27,6 @@ export const login:Handler = async (req, res, next) => {
     const token = generateToken(user.id);
     return res.json({token, message: 'Login completed successfully'});
   } catch (err) {
-    responseError(err, req, res, next);
+    next(err);
   }
 };

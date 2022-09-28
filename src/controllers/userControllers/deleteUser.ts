@@ -1,10 +1,8 @@
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { responseError } from '../../db/middleware/responseError';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND } from '../../utils/error/errorsText';
 import { repositorys } from '../../utils/repository';
-
 
 export const deleteUser:Handler = async (req, res, next) => {
   try {
@@ -15,6 +13,6 @@ export const deleteUser:Handler = async (req, res, next) => {
     await repositorys.userRepository.remove(user);
     return res.json({massage: 'User deleted'});
   } catch (err) {
-    responseError(err, req, res, next);
+    next(err);
   }
 };

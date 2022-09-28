@@ -1,7 +1,7 @@
 import * as express from 'express';
 import { userRouter } from './routes/user.routes';
 import { authenticationRouter } from './routes/authentication.routes';
-import { responseError } from './middleware/responseError';
+import { responseError } from './middleware/errorsHandler';
 
 export const app = express();
 

@@ -1,9 +1,9 @@
-import { Handler } from "express";
-import { StatusCodes } from "http-status-codes";
+import { Handler } from 'express';
+import { StatusCodes } from 'http-status-codes';
 import * as jwt from 'jsonwebtoken';
-import { customError } from "../../utils/error/customError";
-import { NOT_AUTHORIZED } from "../../utils/error/errorsText";
-import { responseError } from "./responseError";
+import { customError } from '../../utils/error/customError';
+import { INVALID_TOKEN, NOT_AUTHORIZED, NOT_REGISTRED } from '../../utils/error/errorsText';
+import { repositorys } from '../../utils/repository';
 
 export const tokenVerification:Handler = async (req, res, next) => {
   try {
@@ -12,9 +12,20 @@ export const tokenVerification:Handler = async (req, res, next) => {
     if(!token) {
       throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
     }
-    jwt.verify(token, 'secret');
+
+    const payload = jwt.verify(token, 'secret') as {id: number};
+    const existingUser = await repositorys.userRepository.findOneBy({id: payload.id});
+    if(!existingUser) {
+      throw customError(StatusCodes.FORBIDDEN, NOT_REGISTRED);
+    }
+
     next();
   } catch (err) {
-    responseError(err, req, res, next);
+    if (err instanceof jwt.JsonWebTokenError) {
+      return next(
+        customError(StatusCodes.FORBIDDEN, INVALID_TOKEN)
+      )
+    }
+    next(err);
   }
 };
