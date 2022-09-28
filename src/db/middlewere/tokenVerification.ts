@@ -13,11 +13,14 @@ export const tokenVerification:Handler = async (req, res, next) => {
     if(!token) {
       throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
     }
-    const payload = jwt.verify(token, 'secret') as {id: number};
-    const existingUser = await repositorys.userRepository.findOneBy({id: payload.id});
-    if(!existingUser) {
-      throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
-    }
+    
+  jwt.verify(token, 'secret', function (error) {
+      if(error) {
+        console.log(error.message);
+        throw customError(StatusCodes.FORBIDDEN, NOT_AUTHORIZED);
+      }
+    });
+
     next();
   } catch (err) {
     responseError(err, req, res, next);
