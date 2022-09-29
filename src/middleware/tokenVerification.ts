@@ -4,7 +4,7 @@ import * as jwt from 'jsonwebtoken';
 import { config } from '../config';
 import { customError } from '../utils/error/customError';
 import { INVALID_TOKEN, NOT_AUTHORIZED, NOT_REGISTRED } from '../utils/error/errorsText';
-import { repositorys } from '../utils/repository';
+import { repositorys } from '../db';
 
 export const tokenVerification:Handler = async (req, res, next) => {
   try {

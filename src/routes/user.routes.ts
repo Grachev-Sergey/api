@@ -4,8 +4,8 @@ import userControllers from '../controllers/userControllers';
 
 const userRouter = express.Router();
 
-userRouter.get('/read', tokenVerification, userControllers.getUsers);
-userRouter.put('/update/:id', tokenVerification, userControllers.updateUser);
-userRouter.delete('/delete/:id', tokenVerification, userControllers.deleteUser);
+userRouter.get('/', tokenVerification, userControllers.getUsers);
+userRouter.put('/:id', tokenVerification, userControllers.updateUser);
+userRouter.delete('/:id', tokenVerification, userControllers.deleteUser);
 
 export {userRouter};

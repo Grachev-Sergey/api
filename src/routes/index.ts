@@ -4,7 +4,7 @@ import { userRouter } from './user.routes';
 
 const router = express.Router();
 
-router.use('/auth', authenticationRouter);
+router.use('/', authenticationRouter);
 router.use('/user', userRouter);
 
 export default router;

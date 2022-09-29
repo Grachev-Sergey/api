@@ -1,5 +1,5 @@
 import { Handler } from 'express';
-import { repositorys } from '../../utils/repository';
+import { repositorys } from '../../db';
 
 export const getUsers:Handler = async (req, res, next) => {
   try {

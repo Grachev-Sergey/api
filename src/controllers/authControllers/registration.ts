@@ -3,7 +3,7 @@ import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { EMAIL_USED } from '../../utils/error/errorsText';
 import { User } from '../../db/entity/User';
-import { repositorys } from '../../utils/repository';
+import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { generateToken } from '../../utils/tokenGenerator';
 import { config } from '../../config';
@@ -24,6 +24,8 @@ export const registrationUser:Handler = async (req, res, next) => {
 
     await repositorys.userRepository.save(user);
     const token = generateToken(user.id);
+    delete user.password;
+
     return res.json({user, token, message: config.apiMessage.REGISTRATION_SUCCESS});
   } catch (err) {
     next(err);

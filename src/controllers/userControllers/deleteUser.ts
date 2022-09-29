@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 import { config } from '../../config';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND } from '../../utils/error/errorsText';
-import { repositorys } from '../../utils/repository';
+import { repositorys } from '../../db';
 
 export const deleteUser:Handler = async (req, res, next) => {
   try {
