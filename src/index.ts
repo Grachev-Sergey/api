@@ -1,14 +1,15 @@
-import { app } from "./db";
+import { app } from "./app";
+import { config } from "./config";
 import { AppDataSource } from "./db/data-source";
 
-async function main() {
-    try {
-        await AppDataSource.initialize();
-        console.log('Database conected');
-        app.listen(3000);
-        console.log('Server is listening on port', 3000);
-    } catch (error) {
-        console.log(error);
-    }
+async function main () {
+  try {
+    await AppDataSource.initialize();
+    console.log(config.apiMessage.CONECTING);
+    app.listen(config.serverPort);
+    console.log(config.apiMessage.LISTENING, config.serverPort);
+  } catch (error) {
+      console.log(error);
+  }
 };
 main();

@@ -1,16 +1,12 @@
 import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { EMAIL_USED } from '../../utils/error/errorsText';
 import { User } from '../../db/entity/User';
 import { repositorys } from '../../utils/repository';
 import { customError } from '../../utils/error/customError';
-
-const generateToken = (id: number) => {
-  const payload = {id};
-  return jwt.sign(payload, 'secret', {expiresIn: "12h"});
-};
+import { generateToken } from '../../utils/tokenGenerator';
+import { config } from '../../config';
 
 export const registrationUser:Handler = async (req, res, next) => {
   try {
@@ -28,7 +24,7 @@ export const registrationUser:Handler = async (req, res, next) => {
 
     await repositorys.userRepository.save(user);
     const token = generateToken(user.id);
-    return res.json({user, token, message: 'Registration completed successfully'});
+    return res.json({user, token, message: config.apiMessage.REGISTRATION_SUCCESS});
   } catch (err) {
     next(err);
   }

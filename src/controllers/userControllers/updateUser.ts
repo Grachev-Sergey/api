@@ -1,5 +1,6 @@
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import { config } from '../../config';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND } from '../../utils/error/errorsText';
 import { repositorys } from '../../utils/repository';
@@ -18,7 +19,7 @@ export const updateUser:Handler = async (req, res, next) => {
     user.password = password;
   
     await repositorys.userRepository.save(user);
-    return res.json({massage: 'User data updated successfully'});
+    return res.json({massage: config.apiMessage.UPDATE_USER});
   } catch (err) {
     next(err);
   }

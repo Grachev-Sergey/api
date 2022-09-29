@@ -1,15 +1,11 @@
 import * as bcrypt from 'bcryptjs';
-import * as jwt from 'jsonwebtoken';
 import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../utils/repository';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
-
-const generateToken = (id: number) => {
-  const payload = {id};
-  return jwt.sign(payload, 'secret', {expiresIn: "1h"});
-};
+import { generateToken } from '../../utils/tokenGenerator';
+import { config } from '../../config';
 
 export const login:Handler = async (req, res, next) => {
   try {
@@ -25,7 +21,7 @@ export const login:Handler = async (req, res, next) => {
     }
   
     const token = generateToken(user.id);
-    return res.json({token, message: 'Login completed successfully'});
+    return res.json({token, message: config.apiMessage.LOGIN_SUCCESS});
   } catch (err) {
     next(err);
   }

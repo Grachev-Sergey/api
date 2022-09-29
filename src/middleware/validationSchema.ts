@@ -1,9 +1,9 @@
-import { Handler } from 'express'
+import { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { customError } from '../../utils/error/customError';
-import { INCORRECT_DATA } from '../../utils/error/errorsText';
-import { SchemaType } from '../../utils/schema/schemaType';
+import { customError } from '../utils/error/customError';
+import { INCORRECT_DATA } from '../utils/error/errorsText';
+import { SchemaType } from '../schema/schemaType';
 
 export const validationSchema = (schema: SchemaType):Handler => async (req, res, next) => {
   const body = req.body;
