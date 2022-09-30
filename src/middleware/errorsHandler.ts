@@ -1,4 +1,4 @@
-import { ErrorRequestHandler } from 'express';
+import type { ErrorRequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { SERVER_ERROR } from '../utils/error/errorsText';
 

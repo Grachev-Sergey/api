@@ -1,4 +1,4 @@
-import { Handler } from 'express';
+import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { config } from '../../config';
 import { customError } from '../../utils/error/customError';
@@ -7,12 +7,12 @@ import { repositorys } from '../../db';
 
 export const deleteUser:Handler = async (req, res, next) => {
   try {
-    const user = await repositorys.userRepository.findOneBy({id: Number(req.params.id)});
+    const user = await repositorys.userRepository.findOneBy({ id: Number(req.params.id) });
     if (!user) {
       throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }
     await repositorys.userRepository.remove(user);
-    return res.json({massage: config.apiMessage.DELETED});
+    return res.json({ massage: config.apiMessage.DELETED });
   } catch (err) {
     next(err);
   }

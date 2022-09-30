@@ -8,4 +8,4 @@ userRouter.get('/', tokenVerification, userControllers.getUsers);
 userRouter.put('/:id', tokenVerification, userControllers.updateUser);
 userRouter.delete('/:id', tokenVerification, userControllers.deleteUser);
 
-export {userRouter};
+export { userRouter };

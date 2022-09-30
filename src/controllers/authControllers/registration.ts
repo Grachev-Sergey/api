@@ -1,5 +1,5 @@
 import * as bcrypt from 'bcryptjs';
-import { Handler } from 'express';
+import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { EMAIL_USED } from '../../utils/error/errorsText';
 import { User } from '../../db/entity/User';
@@ -10,8 +10,8 @@ import { config } from '../../config';
 
 export const registrationUser:Handler = async (req, res, next) => {
   try {
-    const {fullName, dob, email, password} = req.body;
-    const checkUniq = await repositorys.userRepository.findOneBy({email});
+    const { fullName, dob, email, password } = req.body;
+    const checkUniq = await repositorys.userRepository.findOneBy({ email });
     if (checkUniq) {
       throw customError(StatusCodes.BAD_REQUEST, EMAIL_USED);
     }
@@ -26,7 +26,7 @@ export const registrationUser:Handler = async (req, res, next) => {
     const token = generateToken(user.id);
     delete user.password;
 
-    return res.json({user, token, message: config.apiMessage.REGISTRATION_SUCCESS});
+    return res.json({ user, token, message: config.apiMessage.REGISTRATION_SUCCESS });
   } catch (err) {
     next(err);
   }

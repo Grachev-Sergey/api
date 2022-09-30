@@ -8,4 +8,4 @@ const authenticationRouter = express.Router();
 authenticationRouter.post('/registration', validationSchema(schema.registrationSchema), authControllers.registrationUser);
 authenticationRouter.post('/login', validationSchema(schema.authorizationSchema), authControllers.login);
 
-export {authenticationRouter};
+export { authenticationRouter };
