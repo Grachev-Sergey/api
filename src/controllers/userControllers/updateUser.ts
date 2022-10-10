@@ -7,14 +7,13 @@ import { repositorys } from '../../db';
 
 export const updateUser: Handler = async (req, res, next) => {
   try {
-    const { fullName, dob, email, password } = req.body;
+    const { fullName, email, password } = req.body;
     const user = await repositorys.userRepository.findOneBy({ id: Number(req.params.id) });
     if (!user) {
       throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }
 
     user.fullName = fullName;
-    user.dob = dob;
     user.email = email;
     user.password = password;
 

@@ -1,5 +1,6 @@
 errorsHandler.ts
 src/index.ts
+.eslintrc.js
 node_modules/*
 build
 lock_node_version.js

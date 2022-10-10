@@ -12,24 +12,24 @@ export class User {
     fullName: string;
 
   @Column({
-    type: 'varchar',
-    nullable: true,
-  })
-    dob: string;
-
-  @Column({
     unique: true,
     type: 'varchar',
-    nullable: true,
+    nullable: false,
   })
     email: string;
 
   @Column({
     select: false,
     type: 'varchar',
-    nullable: true,
+    nullable: false,
   })
     password: string;
+
+  @Column({
+    type: 'varchar',
+    nullable: true,
+  })
+    avatar: string;
 
   @CreateDateColumn()
     createdAt: Date;

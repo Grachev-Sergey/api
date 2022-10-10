@@ -10,15 +10,13 @@ import { config } from '../../config';
 
 export const registrationUser:Handler = async (req, res, next) => {
   try {
-    const { fullName, dob, email, password } = req.body;
+    const { email, password } = req.body;
     const checkUniq = await repositorys.userRepository.findOneBy({ email });
     if (checkUniq) {
       throw customError(StatusCodes.BAD_REQUEST, EMAIL_USED);
     }
 
     const user = new User();
-    user.fullName = fullName;
-    user.dob = dob;
     user.email = email;
     user.password = bcrypt.hashSync(password, 5);
 
