@@ -5,7 +5,10 @@ import schema from '../schema';
 
 const authenticationRouter = express.Router();
 
-authenticationRouter.post('/signup', validationSchema(schema.registrationSchema), authControllers.registrationUser);
-authenticationRouter.post('/login', validationSchema(schema.authorizationSchema), authControllers.login);
-
+authenticationRouter.post('/signup',
+  validationSchema(schema.registrationSchema),
+  authControllers.registrationUser);
+authenticationRouter.post('/login',
+  validationSchema(schema.authorizationSchema),
+  authControllers.login);
 export { authenticationRouter };

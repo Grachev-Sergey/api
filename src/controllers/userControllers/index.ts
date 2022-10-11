@@ -1,9 +1,13 @@
 import { deleteUser } from './deleteUser';
 import { getUsers } from './getUsers';
-import { updateUser } from './updateUser';
+import { updateUserInfo } from './updateUserInfo';
+import { updateUserPass } from './updateUserPass';
+import { getUser } from './getUser';
 
 export default {
+  getUser,
   deleteUser,
   getUsers,
-  updateUser,
+  updateUserInfo,
+  updateUserPass,
 };
