@@ -4,7 +4,7 @@ import { StatusCodes } from 'http-status-codes';
 import * as jwt from 'jsonwebtoken';
 import { config } from '../../config';
 import { customError } from '../../utils/error/customError';
-import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
+import { WRONG_PASS } from '../../utils/error/errorsText';
 import { repositorys } from '../../db';
 
 export const updateUserPass: Handler = async (req, res, next) => {
@@ -15,10 +15,6 @@ export const updateUserPass: Handler = async (req, res, next) => {
     const payload = jwt.verify(token, config.token.secretKey) as { id: number };
     const id = payload.id;
     const user = await repositorys.userRepository.findOneBy({ id: payload.id });
-
-    if (!user) {
-      throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
-    }
 
     const currentUserPass = await repositorys.userRepository
       .createQueryBuilder('user')

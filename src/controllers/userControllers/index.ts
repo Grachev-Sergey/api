@@ -3,6 +3,7 @@ import { getUsers } from './getUsers';
 import { updateUserInfo } from './updateUserInfo';
 import { updateUserPass } from './updateUserPass';
 import { getUser } from './getUser';
+import { updateUserPhoto } from './updateUserPhoto';
 
 export default {
   getUser,
@@ -10,4 +11,5 @@ export default {
   getUsers,
   updateUserInfo,
   updateUserPass,
+  updateUserPhoto,
 };

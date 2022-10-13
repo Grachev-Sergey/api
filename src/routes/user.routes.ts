@@ -20,6 +20,9 @@ userRouter.put('/changepass',
   tokenVerification,
   validationSchema(schema.updateUserPassSchema),
   userControllers.updateUserPass);
+userRouter.put('/uploadphoto',
+  tokenVerification,
+  userControllers.updateUserPhoto);
 userRouter.delete('/:id',
   tokenVerification,
   userControllers.deleteUser);
