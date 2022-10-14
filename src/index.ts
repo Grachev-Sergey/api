@@ -5,7 +5,6 @@ import { AppDataSource } from './db/data-source';
 async function main() {
   try {
     await AppDataSource.initialize();
-    console.log(config.apiMessage.CONECTING);
     app.listen(config.serverPort);
     console.log(config.apiMessage.LISTENING, config.serverPort);
   } catch (error) {

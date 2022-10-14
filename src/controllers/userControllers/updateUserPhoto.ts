@@ -1,7 +1,7 @@
 import type { Handler } from 'express';
 import * as jwt from 'jsonwebtoken';
 import * as fs from 'node:fs/promises';
-import * as Uuid from 'Uuid';
+import * as Uuid from 'uuid';
 import { config } from '../../config';
 import { repositorys } from '../../db';
 
@@ -19,11 +19,15 @@ export const updateUserPhoto: Handler = async (req, res, next) => {
     const avatarName = `${randomName}.${avatarType}`;
     const route = `static/${avatarName}`;
 
+    if (user.avatar) {
+      const oldName = user.avatar;
+      fs.unlink(`static/${oldName}`);
+    }
     fs.writeFile(route, avatarData, { encoding: 'base64' });
-    const avatarRoute = `http://localhost:4000/${avatarName}`;
-    user.avatar = avatarRoute;
+
+    user.avatar = avatarName;
     await repositorys.userRepository.save(user);
-    return res.json({ user, message: config.apiMessage.UPDATE_USER });
+    return res.json({ user });
   } catch (err) {
     next(err);
   }
