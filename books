@@ -1,0 +1,123 @@
+1 {
+  cover: http://localhost:4000/booksCover/The Chronicles of Narnia.jpg
+  title: 'The Chronicles of Narnia'
+  author: 'C. S. Lewis'
+  description: "The Chronicles of Narnia is a series of seven fantasy novels by British author C. S. Lewis. Illustrated by Pauline Baynes and originally published between 1950 and 1956, The Chronicles of Narnia has been adapted for radio, television, the stage, film and video games. The series is set in the fictional realm of Narnia, a fantasy world of magic, mythical beasts and talking animals. It narrates the adventures of various children who play central roles in the unfolding history of the Narnian world. Except in The Horse and His Boy, the protagonists are all children from the real world who are magically transported to Narnia, where they are sometimes called upon by the lion Aslan to protect Narnia from evil. The books span the entire history of Narnia, from its creation in The Magician's Nephew to its eventual destruction in The Last Battle."
+  dateOfIssue: '1950'
+  genre: ["Fantasy", "Children's literature"]
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+2{
+  cover: http://localhost:4000/booksCover/The Psychlogy of Money.jpg
+  title: 'The Psychlogy of Money'
+  author: 'Morgan Housel'
+  description: "Doing well with money isn't necessarily about what you know. It's about how you behave. And behavior is hard to teach, even to really smart people.Money―investing, personal finance, and business decisions―is typically taught as a math-based field, where data and formulas tell us exactly what to do. But in the real world people don't make financial decisions on a spreadsheet. They make them at the dinner table, or in a meeting room, where personal history, your own unique view of the world, ego, pride, marketing, and odd incentives are scrambled together.In The Psychology of Money, award-winning author Morgan Housel shares 19 short stories exploring the strange ways people think about money and teaches you how to make better sense of one of life's most important topics."
+  dateOfIssue: '2020'
+  genre: ['Finance', 'Nonfiction', 'Psychology']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+3{
+  cover: http://localhost:4000/booksCover/How to stop worrying and start living.jpg
+  title: 'How to stop worrying and start living'
+  author: 'Dale Carnegie' 
+  description: "Stop worrying and take the steps to a happier, more fulfilling life! Through Dale Carnegie’s six-million-copy bestseller recently revised, millions of people have been helped to overcome the worry habit. Dale Carnegie offers a set of practical formulas you can put to work today. In our fast-paced world—formulas that will last a lifetime!"
+  dateOfIssue: '1997'
+  genre: ['Self Help', 'Nonfiction', 'Psychology']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+4{
+  cover: http://localhost:4000/booksCover/Don't sweat the Small Stuff.jpg
+  title: "Don't sweat the small stuff"
+  author: 'Richard Carlson'
+  description: "Put challenges in perspective, reduce stress and anxiety through small daily changes, and find the path to achieving your goals with this groundbreaking inspirational guide—a self-help classic. Don't Sweat the Small Stuff...and It's All Small Stuff is a book that tells you how to keep from letting the little things in life drive you crazy. In thoughtful and insightful language, author Richard Carlson reveals ways to calm down in the midst of your incredibly hurried, stress-filled life."
+  dateOfIssue: ''
+  genre: ['Self Help', 'Nonfiction', 'Psychology']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+5{
+  cover: http://localhost:4000/booksCover/The Picture of Dorian Gray.jpg
+  title: 'The Picture of Dorian Gray'
+  author: 'Oscar Wilde'
+  description: "In this celebrated work, his only novel, Wilde forged a devastating portrait of the effects of evil and debauchery on a young aesthete in late-19th-century England. Combining elements of the Gothic horror novel and decadent French fiction, the book centers on a striking premise: As Dorian Gray sinks into a life of crime and gross sensuality, his body retains perfect youth and vigor while his recently painted portrait grows day by day into a hideous record of evil, which he must keep hidden from the world. For over a century, this mesmerizing tale of horror and suspense has enjoyed wide popularity. It ranks as one of Wilde's most important creations and among the classic achievements of its kind."
+  dateOfIssue: '1993'
+  genre: ['Classics', 'Fiction', 'Horror', 'Fantasy']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+6{
+  cover:  http://localhost:4000/booksCover/The Subtle art of not giving a fuck.jpg
+  title: 'The Subtle art of not giving a fuck'
+  author: 'Mark Manson'
+  description: "In this generation-defining self-help guide, a superstar blogger cuts through the crap to show us how to stop trying to be 'positive' all the time so that we can truly become better, happier people. For decades, we’ve been told that positive thinking is the key to a happy, rich life. "F**k positivity," Mark Manson says. "Let’s be honest, shit is f**ked and we have to live with it." In his wildly popular Internet blog, Manson doesn’t sugarcoat or equivocate. He tells it like it is—a dose of raw, refreshing, honest truth that is sorely lacking today. The Subtle Art of Not Giving a F**k is his antidote to the coddling, let’s-all-feel-good mindset that has infected modern society and spoiled a generation, rewarding them with gold medals just for showing up."
+  dateOfIssue: '2016'
+  genre: ['Nonfiction', 'Self Help', 'Psychology']
+  hardCoverPrice: '14.99'
+  paperback:'true'
+  aperbackPrice:'11.99'
+}
+7{
+  cover:  http://localhost:4000/booksCover/The Two towers.jpg
+  title: 'The Two towers'
+  author: 'J. R. R. Tolkien'
+  description: "The Two Towers is the second part of J.R.R. Tolkien’s epic adventure, The Lord of the Rings. J.R.R. Tolkien’s classic epic fantasy trilogy The Lord of the Rings, now with a fresh new package for Book 2, The Two Towers. Frodo and his Companions of the Ring have been beset by danger during their quest to prevent the Ruling Ring from falling into the hands of the Dark Lord by destroying it in the Cracks of Doom. They lost the wizard Gandalf in the Mines of Moria. And Boromir, seduced by the power of the Ring, tried to seize it by force. While Frodo and Sam made their escape, the rest of the company was attacked by Orcs."
+  dateOfIssue: '1954'
+  genre: ['Fantasy', 'Classics', 'Fiction', 'Adventure']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+8{
+  cover:  http://localhost:4000/booksCover/Book of Fairy Tales.jpg
+  title: 'Book of Fairy Tales'
+  author: 'Angela Carter'
+  description: "Once upon a time, fairy tales weren't just meant for children. This collection of alternative stories from Angela Carter reveals a world where dippy princesses are replaced by bad girls and enchantresses, and strong minds, low cunning and dirty tricks are the order of the day."
+  dateOfIssue: '1992'
+  genre: ['Short', 'Stories', 'Fantasy']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+9{
+  cover:  http://localhost:4000/booksCover/The Weight of Things.jpg
+  title: 'The Weight of Things'
+  author: 'Marianne Flitz'
+  description: "The Weight of Things is the first book, and the first translated book, and possibly the only translatable book by Austrian writer Marianne Fritz (1948–2007). For after winning acclaim with this novel—awarded the Robert Walser Prize in 1978—she embarked on a 10,000-page literary project called “The Fortress,” creating over her lifetime elaborate colorful diagrams and typescripts so complicated that her publisher had to print them straight from her original documents. A project as brilliant as it is ambitious and as bizarre as it is brilliant, it earned her cult status, comparisons to James Joyce no less than Henry Darger, and admirers including Elfriede Jelinek and W. G. Sebald."
+  dateOfIssue: '1978'
+  genre: ['Fiction', 'Novels', 'Literary', 'Fiction']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+10{
+  cover:  http://localhost:4000/booksCover/Moby Dick.jpg
+  title: 'Moby Dick'
+  author: 'Herman Melville'
+  description: "'It is the horrible texture of a fabric that should be woven of ships' cables and hawsers. A Polar wind blows through it, and birds of prey hover over it.' So Melville wrote of his masterpiece, one of the greatest works of imagination in literary history. In part, Moby-Dick is the story of an eerily compelling madman pursuing an unholy war against a creature as vast and dangerous and unknowable as the sea itself. But more than just a novel of adventure, more than an encyclopaedia of whaling lore and legend, the book can be seen as part of its author's lifelong meditation on America. Written with wonderfully redemptive humour, Moby-Dick is also a profound inquiry into character, faith, and the nature of perception."
+  dateOfIssue: '1851'
+  genre: ['Classics', 'Fiction', 'Literature', 'Adventure']
+  hardCoverPrice: '14.99'
+  paperback:'true'
+  aperbackPrice:'11.99'
+
+}
+11{
+  cover:  http://localhost:4000/booksCover/milk and honey.jpg
+  title: 'Milk and honey'
+  author: 'Rupi Kaur'
+  description: "Milk and honey' is a collection of poetry and prose about survival. About the experience of violence, abuse, love, loss, and femininity. It is split into four chapters, and each chapter serves a different purpose. Deals with a different pain. Heals a different heartache. 'milk and honey' takes readers through a journey of the most bitter moments in life and finds sweetness in them because there is sweetness everywhere if you are just willing to look."
+  dateOfIssue: '2014'
+  genre: ['Poetry', 'Feminism', 'Nonfiction']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
+12{
+  cover:  http://localhost:4000/booksCover/The Crying book.jpg
+  title: 'The Crying book'
+  author: 'Heather Christle'
+  description: "Award-winning poet Heather Christle has just lost a dear friend to suicide and must reckon with her own struggles with depression and the birth of her first child. How she faces her joy, grief, anxiety, impending motherhood, and conflicted truce with the world results in a moving meditation on the nature, rapture, and perils of crying―from the history of tear-catching gadgets (including the woman who designed a gun that shoots tears) to the science behind animal tears (including moths who drink them) to the fraught role of white women's tears in racist violence."
+  dateOfIssue: '2019'
+  genre: ['Poetry', 'Nonfiction']
+  hardCoverPrice: '14.99'
+  paperback:'false'
+}
