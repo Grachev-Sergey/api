@@ -6,3 +6,4 @@ export const INCORRECT_DATA = 'incorrect data entered';
 export const SERVER_ERROR = 'Internal Server Error';
 export const INVALID_TOKEN = 'Invalid token';
 export const NOT_REGISTRED = 'User not registered';
+export const BOOK_NOT_FOUND = 'Book not found';

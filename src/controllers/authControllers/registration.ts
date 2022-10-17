@@ -2,7 +2,7 @@ import * as bcrypt from 'bcryptjs';
 import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { EMAIL_USED } from '../../utils/error/errorsText';
-import { User } from '../../db/entity/User';
+import { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { generateToken } from '../../utils/tokenGenerator';

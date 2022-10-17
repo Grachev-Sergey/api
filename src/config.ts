@@ -23,5 +23,6 @@ export const config = {
     REGISTRATION_SUCCESS: 'Registration completed successfully',
     DELETED: 'User deleted',
     UPDATE_USER: 'User data updated successfully',
+    BOOK_ADDED: 'book added',
   },
 };

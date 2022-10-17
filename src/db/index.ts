@@ -1,6 +1,8 @@
 import { AppDataSource } from './data-source';
-import { User } from './entity/User';
+import { Book } from './entitys/Book';
+import { User } from './entitys/User';
 
 export const repositorys = {
   userRepository: AppDataSource.getRepository(User),
+  bookRepository: AppDataSource.getRepository(Book),
 };

@@ -33,7 +33,10 @@ export class Book {
     aperbackPrice: string;
 
   @Column({ type: 'varchar', nullable: true })
-  rating: string;
+    status: string;
+
+  @Column({ type: 'varchar', nullable: true })
+    rating: string;
 
   @Column({ type: 'varchar', nullable: true })
     comments: string;
