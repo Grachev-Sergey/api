@@ -6,7 +6,9 @@ import { BOOKS_NOT_FOUND } from '../../utils/error/errorsText';
 
 export const getAllBooks:Handler = async (req, res, next) => {
   try {
-    const books = await repositorys.bookRepository.find();
+    const books = await repositorys.bookRepository
+      .createQueryBuilder("user")
+      .getMany();
     if (!books) {
       throw customError(StatusCodes.BAD_REQUEST, BOOKS_NOT_FOUND);
     }

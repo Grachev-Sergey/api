@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, AfterLoad } from 'typeorm';
+import { addUrl } from '../../utils/addUrl';
 
 @Entity()
 export class Book {
@@ -43,4 +44,9 @@ export class Book {
 
   @Column({ type: 'varchar', nullable: true })
     comments: string;
+
+  @AfterLoad()
+    changingPathInResponse() {
+    this.cover = addUrl(this.cover);
+  }
 }
