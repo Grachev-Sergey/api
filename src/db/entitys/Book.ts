@@ -23,6 +23,9 @@ export class Book {
   @Column({ type: 'varchar' })
     genre: string[];
 
+  @Column({ type: 'varchar' })
+    hardCover: boolean;
+
   @Column({ type: 'varchar', nullable: true })
     hardCoverPrice: string;
 
@@ -30,7 +33,7 @@ export class Book {
     paperback: boolean;
 
   @Column({ type: 'varchar', nullable: true })
-    aperbackPrice: string;
+    paperbackPrice: string;
 
   @Column({ type: 'varchar', nullable: true })
     status: string;

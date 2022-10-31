@@ -12,9 +12,10 @@ export const addBook:Handler = async (req, res, next) => {
       description,
       dateOfIssue,
       genre,
+      hardCover,
       hardCoverPrice,
       paperback,
-      aperbackPrice,
+      paperbackPrice,
       status,
     } = req.body;
 
@@ -25,9 +26,10 @@ export const addBook:Handler = async (req, res, next) => {
     book.description = description;
     book.dateOfIssue = dateOfIssue;
     book.genre = genre;
+    book.hardCover = hardCover;
     book.hardCoverPrice = hardCoverPrice;
     book.paperback = paperback;
-    book.aperbackPrice = aperbackPrice;
+    book.paperbackPrice = paperbackPrice;
     book.status = status;
 
     await repositorys.bookRepository.save(book);
