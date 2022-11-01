@@ -46,7 +46,7 @@ export class Book {
     comments: string;
 
   @AfterLoad()
-    changingPathInResponse() {
+  changingPathInResponse() {
     this.cover = addUrl(this.cover);
   }
 }
