@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, AfterLoad } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, AfterLoad, ManyToMany, JoinTable } from 'typeorm';
 import { addUrl } from '../../utils/addUrl';
+import { Genre } from './Genre';
 
 @Entity()
 export class Book {
@@ -21,8 +22,9 @@ export class Book {
   @Column({ type: 'varchar' })
     dateOfIssue: string;
 
-  @Column({ type: 'varchar' })
-    genre: string[];
+  @ManyToMany(() => Genre, (genre) => genre.id)
+  @JoinTable()
+    genre: Genre[];
 
   @Column({ type: 'varchar' })
     hardCover: boolean;
