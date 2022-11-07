@@ -22,7 +22,9 @@ export class Book {
   @Column({ type: 'varchar' })
     dateOfIssue: string;
 
-  @ManyToMany(() => Genre, (genre) => genre.id)
+  @ManyToMany(() => Genre, (genre) => genre.id, {
+    eager: true,
+  })
   @JoinTable()
     genre: Genre[];
 

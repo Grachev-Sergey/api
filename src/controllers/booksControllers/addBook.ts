@@ -25,12 +25,38 @@ export const addBook:Handler = async (req, res, next) => {
     book.author = author;
     book.description = description;
     book.dateOfIssue = dateOfIssue;
-    book.genre = genre;
     book.hardCover = hardCover;
     book.hardCoverPrice = hardCoverPrice;
     book.paperback = paperback;
     book.paperbackPrice = paperbackPrice;
     book.status = status;
+
+    const arr = [];
+    for (let i = 0; genre.lenght; i++) {
+      // eslint-disable-next-line no-console
+      console.log(genre[i]);
+      // eslint-disable-next-line no-await-in-loop
+      const foundGenre = await repositorys.genreRepository.findOne({
+        where: {
+          name: genre[i],
+        },
+      });
+      arr.push(foundGenre.name);
+      // eslint-disable-next-line no-console
+      console.log(arr);
+    }
+    book.genre = arr;
+
+    // const arr = [];
+    // const foundGenre = await repositorys.genreRepository.findOne({
+    //   where: {
+    //     name: genre[1],
+    //   },
+    // });
+    // arr.push(foundGenre);
+    // // eslint-disable-next-line no-console
+    // console.log(arr);
+    // book.genre = arr;
 
     await repositorys.bookRepository.save(book);
     return res.json({ message: config.apiMessage.BOOK_ADDED });
