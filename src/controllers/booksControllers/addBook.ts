@@ -1,9 +1,11 @@
 import type { Handler } from 'express';
+import { Any } from 'typeorm';
+
 import { repositorys } from '../../db';
 import { config } from '../../config';
 import { Book } from '../../db/entitys/Book';
 
-export const addBook:Handler = async (req, res, next) => {
+export const addBook: Handler = async (req, res, next) => {
   try {
     const {
       cover,
@@ -32,31 +34,13 @@ export const addBook:Handler = async (req, res, next) => {
     book.status = status;
 
     const arr = [];
-    for (let i = 0; genre.lenght; i++) {
-      // eslint-disable-next-line no-console
-      console.log(genre[i]);
-      // eslint-disable-next-line no-await-in-loop
-      const foundGenre = await repositorys.genreRepository.findOne({
-        where: {
-          name: genre[i],
-        },
-      });
-      arr.push(foundGenre.name);
-      // eslint-disable-next-line no-console
-      console.log(arr);
-    }
+    const foundGenre = await repositorys.genreRepository.find({
+      where: {
+        name: Any(genre),
+      },
+    });
+    arr.push(...foundGenre);
     book.genre = arr;
-
-    // const arr = [];
-    // const foundGenre = await repositorys.genreRepository.findOne({
-    //   where: {
-    //     name: genre[1],
-    //   },
-    // });
-    // arr.push(foundGenre);
-    // // eslint-disable-next-line no-console
-    // console.log(arr);
-    // book.genre = arr;
 
     await repositorys.bookRepository.save(book);
     return res.json({ message: config.apiMessage.BOOK_ADDED });
