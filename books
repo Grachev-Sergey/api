@@ -6,7 +6,7 @@
   "dateOfIssue": "1950",
   "genre": ["Fantasy","Childrens"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "11.99",
   "paperback": "false"
 },
 
@@ -18,7 +18,7 @@
   "dateOfIssue": "2020",
   "genre": ["Finance", "Nonfiction", "Psychology"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "8.50",
   "paperback": "false"
 },
 
@@ -30,7 +30,7 @@
   "dateOfIssue": "1997",
   "genre": ["Self Help", "Nonfiction", "Psychology"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "12.99",
   "paperback": "false",
   "status": "Bestseller"
 },
@@ -43,7 +43,7 @@
   "dateOfIssue": "1997",
   "genre": ["Self Help", "Nonfiction", "Psychology"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "7.50",
   "paperback": "false"
 },
 
@@ -55,7 +55,7 @@
   "dateOfIssue": "1993",
   "genre": ["Classics", "Fiction", "Horror", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "17.99",
   "paperback": "false",
   "status": "New"
 },
@@ -94,7 +94,7 @@
   "dateOfIssue": "1992",
   "genre": ["Short", "Stories", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "5.99",
   "paperback": "false"
 },
 

@@ -31,14 +31,14 @@ export class Book {
   @Column({ type: 'varchar' })
     hardCover: boolean;
 
-  @Column({ type: 'varchar', nullable: true })
-    hardCoverPrice: string;
+  @Column({ type: 'float', nullable: true })
+    hardCoverPrice: number;
 
   @Column({ type: 'varchar' })
     paperback: boolean;
 
-  @Column({ type: 'varchar', nullable: true })
-    paperbackPrice: string;
+  @Column({ type: 'float', nullable: true })
+    paperbackPrice: number;
 
   @Column({ type: 'varchar', nullable: true })
     status: string;

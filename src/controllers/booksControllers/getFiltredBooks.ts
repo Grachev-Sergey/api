@@ -4,8 +4,9 @@ import type { Book } from '../../db/entitys/Book';
 
 type QueryType = {
   genre?: string;
-  minPrice?: string;
-  maxPrice?: string;
+  minPrice?: number;
+  maxPrice?: number;
+  sorting?: string;
 };
 
 type ParamsType = Record<string, never>;
@@ -20,22 +21,36 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 
 export const getFiltredBooks:HandlerType = async (req, res, next) => {
   try {
-    const { genre, minPrice, maxPrice } = req.query;
+    const { genre, minPrice, maxPrice, sorting } = req.query;
+
+    let sortBy: string;
+    if (sorting === 'price') {
+      sortBy = 'hardCoverPrice';
+    } else if (sorting === 'name') {
+      sortBy = 'title';
+    } else if (sorting === 'author name') {
+      sortBy = 'author';
+    } else if (sorting === 'date of issue') {
+      sortBy = 'dateOfIssue';
+    } else {
+      sortBy = sorting;
+    }
+
     if (!genre.length) {
       const books = await repositorys.bookRepository
         .createQueryBuilder('book')
         .andWhere('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
+        .orderBy(`book.${sortBy}`, 'ASC')
         .getMany();
       return res.json({ books });
     }
     const genreArr = genre.split(',');
-    // eslint-disable-next-line no-console
-    console.log(maxPrice, minPrice);
     const books = await repositorys.bookRepository
       .createQueryBuilder('book')
       .leftJoinAndSelect('book.genre', 'genre')
       .where('genre.name IN (:...genreArr)', { genreArr })
       .andWhere('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
+      .orderBy(`book.${sortBy}`, 'ASC')
       .getMany();
     return res.json({ books });
   } catch (err) {
