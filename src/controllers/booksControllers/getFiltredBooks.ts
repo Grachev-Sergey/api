@@ -7,6 +7,7 @@ type QueryType = {
   minPrice?: number;
   maxPrice?: number;
   sorting?: string;
+  page?: number;
 };
 
 type ParamsType = Record<string, never>;
@@ -15,13 +16,16 @@ type BodyType = Record<string, never>;
 
 type ResponseType = {
   books: Book[];
+  counter: number;
+  numberPerPage: number;
 };
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
-export const getFiltredBooks:HandlerType = async (req, res, next) => {
+export const getFiltredBooks: HandlerType = async (req, res, next) => {
   try {
-    const { genre, minPrice, maxPrice, sorting } = req.query;
+    const { genre, minPrice, maxPrice, sorting, page } = req.query;
+    const numberPerPage = 12;
 
     let sortBy: string;
     if (sorting === 'price') {
@@ -36,23 +40,21 @@ export const getFiltredBooks:HandlerType = async (req, res, next) => {
       sortBy = sorting;
     }
 
-    if (!genre.length) {
-      const books = await repositorys.bookRepository
-        .createQueryBuilder('book')
-        .andWhere('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
-        .orderBy(`book.${sortBy}`, 'ASC')
-        .getMany();
-      return res.json({ books });
-    }
-    const genreArr = genre.split(',');
-    const books = await repositorys.bookRepository
+    const filtredBooks = repositorys.bookRepository
       .createQueryBuilder('book')
-      .leftJoinAndSelect('book.genre', 'genre')
-      .where('genre.name IN (:...genreArr)', { genreArr })
-      .andWhere('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
-      .orderBy(`book.${sortBy}`, 'ASC')
+      .where('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
+      .orderBy(`book.${sortBy}`, 'ASC');
+    if (genre.length) {
+      const genreArr = genre.split(',');
+      filtredBooks.leftJoinAndSelect('book.genre', 'genre')
+        .andWhere('genre.name IN (:...genreArr)', { genreArr });
+    }
+    const counter = (await filtredBooks.getMany()).length;
+    const books = await filtredBooks
+      .take(numberPerPage)
+      .skip((page - 1) * numberPerPage)
       .getMany();
-    return res.json({ books });
+    return res.json({ books, counter, numberPerPage });
   } catch (err) {
     next(err);
   }

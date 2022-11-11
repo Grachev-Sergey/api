@@ -28,13 +28,13 @@ export class Book {
   @JoinTable()
     genre: Genre[];
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'boolean' })
     hardCover: boolean;
 
   @Column({ type: 'float', nullable: true })
     hardCoverPrice: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'boolean' })
     paperback: boolean;
 
   @Column({ type: 'float', nullable: true })

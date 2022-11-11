@@ -78,7 +78,7 @@
   "cover": "The-Two-towers.jpg",
   "title": "The Two towers",
   "author": "J. R. R. Tolkien",
-  "description": "he Two Towers is the second part of J.R.R. Tolkien’s epic adventure, The Lord of the Rings. J.R.R. Tolkien’s classic epic fantasy trilogy The Lord of the Rings, now with a fresh new package for Book 2, The Two Towers. Frodo and his Companions of the Ring have been beset by danger during their quest to prevent the Ruling Ring from falling into the hands of the Dark Lord by destroying it in the Cracks of Doom. They lost the wizard Gandalf in the Mines of Moria. And Boromir, seduced by the power of the Ring, tried to seize it by force. While Frodo and Sam made their escape, the rest of the company was attacked by Orcs.",
+  "description": "The Two Towers is the second part of J.R.R. Tolkien’s epic adventure, The Lord of the Rings. J.R.R. Tolkien’s classic epic fantasy trilogy The Lord of the Rings, now with a fresh new package for Book 2, The Two Towers. Frodo and his Companions of the Ring have been beset by danger during their quest to prevent the Ruling Ring from falling into the hands of the Dark Lord by destroying it in the Cracks of Doom. They lost the wizard Gandalf in the Mines of Moria. And Boromir, seduced by the power of the Ring, tried to seize it by force. While Frodo and Sam made their escape, the rest of the company was attacked by Orcs.",
   "dateOfIssue": "1954",
   "genre": ["Fantasy", "Classics", "Fiction", "Adventure"],
   "hardCover": "true",
@@ -106,7 +106,7 @@
   "dateOfIssue": "1978",
   "genre": ["Fiction", "Novels", "Literary"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "16.99",
   "paperback": "false"
 },
 
@@ -118,7 +118,7 @@
   "dateOfIssue": "1851",
   "genre": ["Fiction", "Classics" ,"Literature", "Adventure"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "14",
   "paperback": "true",
   "paperbackPrice": "11.99"
 },
@@ -130,7 +130,7 @@
   "dateOfIssue": "2014",
   "genre": ["Poetry", "Feminism", "Nonfiction"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "16",
   "paperback": "false",
   "status": "Bestseller"
 },
@@ -143,7 +143,7 @@
   "dateOfIssue": "2019",
   "genre": ["Poetry", "Nonfiction"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "13",
   "paperback": "false"
 },
 
@@ -167,8 +167,8 @@
   "dateOfIssue": "2018",
   "genre": ["Mystery", "Thriller", "Fiction"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "20",
+  "paperback": "false"
 }
 15{
   "cover": "Murder-on-the-Orient-Express.jpg",
@@ -178,8 +178,8 @@
   "dateOfIssue": "1934",
   "genre": ["Mystery", "Classics", "Fiction"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "11",
+  "paperback": "false"
 }
 16{
   "cover": "1984.jpg",
@@ -189,9 +189,9 @@
   "dateOfIssue": "1949",
   "genre": ["Classics", "Fiction", "Science Fiction", "Novels"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "10",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "6"
 }
 17{
   "cover": "Animal-Farm.jpg",
@@ -201,8 +201,8 @@
   "dateOfIssue": "1945",
   "genre": ["Classics", "Fiction", "Fantasy", "Politics"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "12",
+  "paperback": "false"
 }
 18{
   "cover": "Dune.jpg",
@@ -212,8 +212,8 @@
   "dateOfIssue": "1965",
   "genre": ["Science Fiction", "Fiction", "Fantasy", "Classics"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "8",
+  "paperback": "false"
 }
 19{
   "cover": "The-Hunger-Games.jpg",
@@ -223,8 +223,9 @@
   "dateOfIssue": "2008",
   "genre": ["Young Adult", "Fiction", "Science Fiction", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "17",
   "paperback": "false",
+  "status": "Bestseller"
 }
 20{
   "cover": "Harry-Potter-and-the-Order-of-the-Phoenix.jpg",
@@ -234,9 +235,9 @@
   "dateOfIssue": "2003",
   "genre": ["Fantasy", "Young Adult", "Fiction", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "16",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "9"
 }
 21{
   "cover": "Pride-and-Prejudice.jpg",
@@ -246,8 +247,8 @@
   "dateOfIssue": "1813",
   "genre": ["Classics", "Fiction", "Romance", "Historical"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "12",
+  "paperback": "false"
 }
 22{
   "cover": "To-Kill-a-Mockingbird.jpg",
@@ -257,8 +258,8 @@
   "dateOfIssue": "1960",
   "genre": ["Classics", "Fiction", "Historical"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "9",
+  "paperback": "false"
 }
 23{
   "cover": "The-Book-Thief.jpg",
@@ -268,36 +269,31 @@
   "dateOfIssue": "2005",
   "genre": ["Historical", "Fiction", "Young Adult", "Historical"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "12",
+  "paperback": "false"
 }
 24{
   "cover": "Twilight.jpg",
   "title": "Twilight",
   "author": "Stephenie Meyer",
-  "description": "About three things I was absolutely positive.
-  First, Edward was a vampire.
-  Second, there was a part of him—and I didn't know how dominant that part might be—that thirsted for my blood.
-  And third, I was unconditionally and irrevocably in love with him.
-  Deeply seductive and extraordinarily suspenseful, Twilight is a love story with bite.",
+  "description": "About three things I was absolutely positive.First, Edward was a vampire. Second, there was a part of him—and I didn't know how dominant that part might be—that thirsted for my blood. And third, I was unconditionally and irrevocably in love with him. Deeply seductive and extraordinarily suspenseful, Twilight is a love story with bite.",
   "dateOfIssue": "2005",
   "genre": ["Fantasy", "Young Adult", "Romance", "Paranormal"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "14",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "11"
 }
 25{
   "cover": "The-Fault-in-Our-Stars.jpg",
   "title": "The Fault in Our Stars",
   "author": "John Green",
-  "description": "Despite the tumor-shrinking medical miracle that has bought her a few years, Hazel has never been anything but terminal, her final chapter inscribed upon diagnosis. But when a gorgeous plot twist named Augustus Waters suddenly appears at Cancer Kid Support Group, Hazel's story is about to be completely rewritten.
-  Insightful, bold, irreverent, and raw, The Fault in Our Stars is award-winning author John Green's most ambitious and heartbreaking work yet, brilliantly exploring the funny, thrilling, and tragic business of being alive and in love.",
+  "description": "Despite the tumor-shrinking medical miracle that has bought her a few years, Hazel has never been anything but terminal, her final chapter inscribed upon diagnosis. But when a gorgeous plot twist named Augustus Waters suddenly appears at Cancer Kid Support Group, Hazel's story is about to be completely rewritten. Insightful, bold, irreverent, and raw, The Fault in Our Stars is award-winning author John Green's most ambitious and heartbreaking work yet, brilliantly exploring the funny, thrilling, and tragic business of being alive and in love.",
   "dateOfIssue": "2012",
   "genre": ["Young Adult", "Romance", "Fiction", "Contemporary"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "8",
+  "paperback": "false"
 }
 26{
   "cover": "Fahrenheit-451.jpg",
@@ -307,8 +303,8 @@
   "dateOfIssue": "1953 ",
   "genre": ["Classics", "Fiction", "Science Fiction", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "17",
+  "paperback": "false"
 }
 27{
   "cover": "Gone-with-the-Wind.jpg",
@@ -318,8 +314,8 @@
   "dateOfIssue": "1936",
   "genre": ["Classics", "Historical", "Fiction", "Romance"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "9",
+  "paperback": "false"
 }
 28{
   "cover": "The-Giving-Tree.jpg",
@@ -329,20 +325,20 @@
   "dateOfIssue": "1964",
   "genre": ["Childrens", "Fiction", "Poetry"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "10",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "6"
 }
 29{
   "cover": "Wuthering-Heights.jpg",
   "title": "Wuthering Heights",
   "author": "Emily Brontë",
-  "description": "At the ce,ntre of this novel is the passionate love between Catherine Earnshaw and Heathcliff - recounted with such emotional intensity that a plain tale of the Yorkshire moors acquires the depth and simplicity of ancient tragedy."
+  "description": "At the ce,ntre of this novel is the passionate love between Catherine Earnshaw and Heathcliff - recounted with such emotional intensity that a plain tale of the Yorkshire moors acquires the depth and simplicity of ancient tragedy.",
   "dateOfIssue": "1847",
   "genre": ["Classics", "Fiction", "Romance"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "11",
+  "paperback": "false"
 }
 30{
   "cover": "Jane-Eyre.jpg",
@@ -353,7 +349,7 @@
   "genre": ["Classics", "Fiction", "Romance", "Historical"],
   "hardCover": "true",
   "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "paperback": "false"
 }
 31{
   "cover": "Harry-Potter-and-the-Philosopher's-Stone.jpg",
@@ -363,8 +359,8 @@
   "dateOfIssue": "1997",
   "genre": ["Fantasy", "Young Adult", "Fiction", "Fantasy"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "13",
+  "paperback": "false"
 }
 32{
   "cover": "The-Da-Vinci-Code.jpg",
@@ -374,9 +370,9 @@
   "dateOfIssue": "2003",
   "genre": ["Fiction", "Mystery", "Thriller"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "22",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "13"
 }
 33{
   "cover": "The-Perks-of-Being-a-Wallflower.jpg",
@@ -386,20 +382,20 @@
   "dateOfIssue": "1999",
   "genre": ["Young Adult", "Fiction", "Contemporary", "Classics"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "11",
+  "paperback": "false"
 }
 34{
   "cover": "Memoirs-of-a-Geisha.jpg",
   "title": "Memoirs of a Geisha",
-  "author": "",
+  "author": "Arthur Golden",
   "description": "A literary sensation and runaway bestseller, this brilliant novel presents with seamless authenticity and exquisite lyricism the true confessions of one of Japan's most celebrated geisha.
   In \"Memoirs of a Geisha,\" we enter a world where appearances are paramount; where a girl's virginity is auctioned to the highest bidder; where women are trained to beguile the most powerful men; and where love is scorned as illusion. It is a unique and triumphant work of fiction - at once romantic, erotic, suspenseful - and completely unforgettable.",
   "dateOfIssue": "1997",
   "genre": ["Fiction", "Romance", "Historical", "Classics"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "23",
+  "paperback": "false"
 }
 35{
   "cover": "Alice's-Adventures-in-Wonderland.jpg",
@@ -409,8 +405,8 @@
   "dateOfIssue": "1871",
   "genre": ["Classics", "Fantasy", "Fiction", "Childrens"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
-  "paperback": "false",
+  "hardCoverPrice": "8",
+  "paperback": "false"
 }
 36{
   "cover": "The-Little-Prince.jpg",
@@ -420,7 +416,7 @@
   "dateOfIssue": "1943",
   "genre": ["Classics", "Fiction", "Fantasy", "Childrens"],
   "hardCover": "true",
-  "hardCoverPrice": "14.99",
+  "hardCoverPrice": "9",
   "paperback": "true",
-  "paperbackPrice": "11.99",
+  "paperbackPrice": "6"
 }
