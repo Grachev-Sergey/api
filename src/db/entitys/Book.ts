@@ -43,8 +43,8 @@ export class Book {
   @Column({ type: 'varchar', nullable: true })
     status: string;
 
-  @Column({ type: 'varchar', nullable: true })
-    rating: string;
+  @Column({ type: 'float' })
+    rating: number;
 
   @Column({ type: 'varchar', nullable: true })
     comments: string;

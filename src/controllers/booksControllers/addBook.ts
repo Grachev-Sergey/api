@@ -19,6 +19,7 @@ export const addBook: Handler = async (req, res, next) => {
       paperback,
       paperbackPrice,
       status,
+      rating,
     } = req.body;
 
     const book = new Book();
@@ -32,6 +33,7 @@ export const addBook: Handler = async (req, res, next) => {
     book.paperback = paperback;
     book.paperbackPrice = paperbackPrice;
     book.status = status;
+    book.rating = rating;
 
     const arr = [];
     const foundGenre = await repositorys.genreRepository.find({

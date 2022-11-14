@@ -7,7 +7,8 @@
   "genre": ["Fantasy","Childrens"],
   "hardCover": "true",
   "hardCoverPrice": "11.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 },
 
 2{
@@ -19,7 +20,8 @@
   "genre": ["Finance", "Nonfiction", "Psychology"],
   "hardCover": "true",
   "hardCoverPrice": "8.50",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 },
 
 3{
