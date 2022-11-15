@@ -16,8 +16,11 @@ export const getUser:Handler = async (req, res, next) => {
       throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }
 
+    const userId = user.id;
+
     const rating = await repositorys.ratingRepository
       .createQueryBuilder('rating')
+      .where('rating.userId = :userId', { userId })
       .leftJoinAndSelect('rating.user', 'user')
       .getMany();
 
@@ -25,6 +28,18 @@ export const getUser:Handler = async (req, res, next) => {
       const ratings = [];
       rating.forEach((item) => ratings.push(item.bookId));
       user.rating = ratings;
+    }
+
+    const favorite = await repositorys.favoriteRepository
+      .createQueryBuilder('favorite')
+      .where('favorite.userId = :userId', { userId })
+      .leftJoinAndSelect('favorite.user', 'user')
+      .getMany();
+
+    if (favorite) {
+      const favorites = [];
+      favorite.forEach((item) => favorites.push(item.bookId));
+      user.favorite = favorites;
     }
 
     return res.json({ user });

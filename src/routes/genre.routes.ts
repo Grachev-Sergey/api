@@ -1,10 +1,9 @@
 import * as express from 'express';
-import { addGenre } from '../controllers/genreControllers/addGenres';
-import { getAllGenres } from '../controllers/genreControllers/getAllGenres';
+import genreControllers from '../controllers/genreControllers';
 
 const genreRouter = express.Router();
 
-genreRouter.post('/addgenre', addGenre);
-genreRouter.get('/', getAllGenres);
+genreRouter.post('/addgenre', genreControllers.addGenre);
+genreRouter.get('/', genreControllers.getAllGenres);
 
 export { genreRouter };
