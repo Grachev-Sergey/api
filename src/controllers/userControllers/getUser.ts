@@ -15,6 +15,18 @@ export const getUser:Handler = async (req, res, next) => {
     if (!user) {
       throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }
+
+    const rating = await repositorys.ratingRepository
+      .createQueryBuilder('rating')
+      .leftJoinAndSelect('rating.user', 'user')
+      .getMany();
+
+    if (rating) {
+      const ratings = [];
+      rating.forEach((item) => ratings.push(item.bookId));
+      user.rating = ratings;
+    }
+
     return res.json({ user });
   } catch (err) {
     next(err);

@@ -3,6 +3,6 @@ import { changeRating } from '../controllers/ratingControllers/changeRating';
 
 const ratingRouter = express.Router();
 
-ratingRouter.put('/', changeRating);
+ratingRouter.post('/', changeRating);
 
 export { ratingRouter };

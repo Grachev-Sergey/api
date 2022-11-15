@@ -34,7 +34,8 @@
   "hardCover": "true",
   "hardCoverPrice": "12.99",
   "paperback": "false",
-  "status": "Bestseller"
+  "status": "Bestseller",
+  "rating": "3.8"
 },
 
 4{
