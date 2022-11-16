@@ -1,5 +1,6 @@
-import { Entity, PrimaryGeneratedColumn, Column, AfterLoad, ManyToMany, JoinTable } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, AfterLoad, ManyToMany, JoinTable, OneToMany } from 'typeorm';
 import { addUrl } from '../../utils/addUrl';
+import { Comment } from './Comments';
 import { Genre } from './Genre';
 
 @Entity()
@@ -46,8 +47,8 @@ export class Book {
   @Column({ type: 'float' })
     rating: number;
 
-  @Column({ type: 'varchar', nullable: true })
-    comments: string;
+  @OneToMany(() => Comment, (comment) => comment.book)
+    comments: Comment[];
 
   @AfterLoad()
   changingPathInResponse() {

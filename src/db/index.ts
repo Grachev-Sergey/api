@@ -1,5 +1,6 @@
 import { AppDataSource } from './data-source';
 import { Book } from './entitys/Book';
+import { Comment } from './entitys/Comments';
 import { Favorite } from './entitys/Favorite';
 import { Genre } from './entitys/Genre';
 import { Rating } from './entitys/Rating';
@@ -11,4 +12,5 @@ export const repositorys = {
   genreRepository: AppDataSource.getRepository(Genre),
   ratingRepository: AppDataSource.getRepository(Rating),
   favoriteRepository: AppDataSource.getRepository(Favorite),
+  commentRepository: AppDataSource.getRepository(Comment),
 };

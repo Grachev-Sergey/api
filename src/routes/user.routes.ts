@@ -9,6 +9,7 @@ const userRouter = express.Router();
 userRouter.get('/',
   tokenVerification,
   userControllers.getUser);
+userRouter.get('/getById/:id', userControllers.getUserById);
 userRouter.get('/all',
   tokenVerification,
   userControllers.getUsers);

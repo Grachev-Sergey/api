@@ -4,6 +4,7 @@ import { updateUserInfo } from './updateUserInfo';
 import { updateUserPass } from './updateUserPass';
 import { getUser } from './getUser';
 import { updateUserPhoto } from './updateUserPhoto';
+import { getUserById } from './getUserById';
 
 export default {
   getUser,
@@ -12,4 +13,5 @@ export default {
   updateUserInfo,
   updateUserPass,
   updateUserPhoto,
+  getUserById,
 };
