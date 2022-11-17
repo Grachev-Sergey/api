@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, AfterLoad, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { addUrl } from '../../utils/addUrl';
+import { addBookUrl } from '../../utils/addUrl';
 import { Comment } from './Comments';
 import { Genre } from './Genre';
 
@@ -52,6 +52,6 @@ export class Book {
 
   @AfterLoad()
   changingPathInResponse() {
-    this.cover = addUrl(this.cover);
+    this.cover = addBookUrl(this.cover);
   }
 }

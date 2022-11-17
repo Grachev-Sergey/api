@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, AfterLoad } from 'typeorm';
+import { addUserUrl } from '../../utils/addUrl';
 import { Favorite } from './Favorite';
 import { Rating } from './Rating';
 
@@ -44,4 +45,9 @@ export class User {
 
   @UpdateDateColumn()
     updatedAt: Date;
+
+  @AfterLoad()
+  changingPathInResponse() {
+    this.avatar = addUserUrl(this.avatar);
+  }
 }
