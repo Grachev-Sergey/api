@@ -21,7 +21,7 @@ export const updateUserPhoto: Handler = async (req, res, next) => {
 
     if (user.avatar) {
       const oldName = user.avatar;
-      fs.unlink(`static/${oldName}`);
+      fs.unlink(`static/${oldName.slice(22)}`);
     }
     fs.writeFile(route, avatarData, { encoding: 'base64' });
 

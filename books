@@ -47,7 +47,8 @@
   "genre": ["Self Help", "Nonfiction", "Psychology"],
   "hardCover": "true",
   "hardCoverPrice": "7.50",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.3"
 },
 
 5{
@@ -60,7 +61,8 @@
   "hardCover": "true",
   "hardCoverPrice": "17.99",
   "paperback": "false",
-  "status": "New"
+  "status": "New",
+  "rating": "4.5"
 },
 
 6{

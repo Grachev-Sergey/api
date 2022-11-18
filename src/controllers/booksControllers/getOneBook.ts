@@ -6,11 +6,18 @@ import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
 
 export const getOneBook:Handler = async (req, res, next) => {
   try {
-    const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.id) });
+    const bookId = Number(req.params.id);
+    const book = await repositorys.bookRepository.findOneBy({ id: bookId });
     if (!book) {
       throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND);
     }
-    return res.json(book);
+    const comments = await repositorys.commentRepository
+      .createQueryBuilder('comment')
+      .where('comment.bookId = :bookId', { bookId })
+      .leftJoinAndSelect('comment.user', 'user')
+      .getMany();
+
+    return res.json({ book, comments });
   } catch (err) {
     next(err);
   }

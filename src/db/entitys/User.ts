@@ -1,5 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, AfterLoad } from 'typeorm';
 import { addUserUrl } from '../../utils/addUrl';
+import { Cart } from './Cart';
 import { Favorite } from './Favorite';
 import { Rating } from './Rating';
 
@@ -39,6 +40,9 @@ export class User {
 
   @OneToMany(() => Favorite, (favorite) => favorite.user)
   favorite: Favorite[];
+
+  @OneToMany(() => Cart, (cart) => cart.user)
+  coart: Cart[];
 
   @CreateDateColumn()
     createdAt: Date;
