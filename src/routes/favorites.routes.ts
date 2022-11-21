@@ -3,7 +3,7 @@ import favoritesControllers from '../controllers/favoritesControllers';
 
 const favoritesRouter = express.Router();
 
-favoritesRouter.post('/add', favoritesControllers.addToFavorites);
-favoritesRouter.post('/remove', favoritesControllers.removeFromFavorites);
+favoritesRouter.post('/', favoritesControllers.addToFavorites);
+favoritesRouter.delete('/', favoritesControllers.removeFromFavorites);
 
 export { favoritesRouter };

@@ -42,7 +42,7 @@ export class User {
   favorite: Favorite[];
 
   @OneToMany(() => Cart, (cart) => cart.user)
-  coart: Cart[];
+  cart: Cart[];
 
   @CreateDateColumn()
     createdAt: Date;

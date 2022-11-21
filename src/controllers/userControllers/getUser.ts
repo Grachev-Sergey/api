@@ -42,6 +42,18 @@ export const getUser:Handler = async (req, res, next) => {
       user.favorite = favorites;
     }
 
+    const cart = await repositorys.cartRepository
+      .createQueryBuilder('cart')
+      .where('cart.userId = :userId', { userId })
+      .leftJoinAndSelect('cart.user', 'user')
+      .getMany();
+
+    if (cart) {
+      const booksInCart = [];
+      cart.forEach((item) => booksInCart.push({ bookId: item.bookId, bookCover: item.bookCover }));
+      user.cart = booksInCart;
+    }
+
     return res.json({ user });
   } catch (err) {
     next(err);

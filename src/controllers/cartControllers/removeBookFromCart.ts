@@ -4,19 +4,19 @@ import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND_IN_FAVORITES } from '../../utils/error/errorsText';
 
-export const removeFromFavorites:Handler = async (req, res, next) => {
+export const removeBookFromCart:Handler = async (req, res, next) => {
   try {
     const { userId, bookId } = req.query;
 
-    const foundInFavorites = await repositorys.favoriteRepository
-      .createQueryBuilder('favorite')
-      .where('favorite.userId = :userId AND favorite.bookId = :bookId', { userId, bookId })
+    const foundInCart = await repositorys.cartRepository
+      .createQueryBuilder('cart')
+      .where('cart.userId = :userId AND cart.bookId = :bookId', { userId, bookId })
       .getOne();
 
-    if (!foundInFavorites) {
+    if (!foundInCart) {
       throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND_IN_FAVORITES);
     }
-    await repositorys.favoriteRepository.remove(foundInFavorites);
+    await repositorys.favoriteRepository.remove(foundInCart);
     return res.sendStatus(StatusCodes.NO_CONTENT);
   } catch (err) {
     next(err);
