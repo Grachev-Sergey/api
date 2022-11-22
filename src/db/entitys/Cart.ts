@@ -16,6 +16,9 @@ export class Cart {
   @Column({ type: 'varchar' })
     bookCover: string;
 
+  @Column({ type: 'float' })
+    price: number;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
     user: User;

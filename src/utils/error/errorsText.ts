@@ -9,3 +9,4 @@ export const NOT_REGISTRED = 'User not registered';
 export const BOOK_NOT_FOUND = 'Book not found';
 export const BOOKS_NOT_FOUND = 'Books not found';
 export const BOOK_NOT_FOUND_IN_FAVORITES = 'Book not found in favorites';
+export const CART_IS_EMPTY = 'Cart is empty';

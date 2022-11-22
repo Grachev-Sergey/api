@@ -7,7 +7,7 @@ import { BOOK_NOT_FOUND, USER_NOT_FOUND } from '../../utils/error/errorsText';
 
 export const addToCart:Handler = async (req, res, next) => {
   try {
-    const { userId, bookId, cover } = req.body;
+    const { userId, bookId, cover, price } = req.body;
 
     const book = await repositorys.bookRepository.findOneBy({ id: bookId });
 
@@ -25,6 +25,7 @@ export const addToCart:Handler = async (req, res, next) => {
     cart.book = book;
     cart.user = user;
     cart.bookCover = cover;
+    cart.price = price;
 
     await repositorys.cartRepository.save(cart);
 
