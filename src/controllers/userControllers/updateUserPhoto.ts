@@ -1,18 +1,13 @@
 import type { Handler } from 'express';
-import * as jwt from 'jsonwebtoken';
 import * as fs from 'node:fs/promises';
 import * as Uuid from 'uuid';
-import { config } from '../../config';
 import { repositorys } from '../../db';
 
 export const updateUserPhoto: Handler = async (req, res, next) => {
   try {
-    const authHeader = req.headers.authorization;
-    const token = authHeader.split(' ')[1];
-    const payload = jwt.verify(token, config.token.secretKey) as { id: number };
-    const user = await repositorys.userRepository.findOneBy({ id: payload.id });
+    const { avatar, userId } = req.body;
+    const user = await repositorys.userRepository.findOneBy({ id: userId });
 
-    const { avatar } = req.body;
     const avatarData = avatar.split('base64,')[1];
     const avatarType = avatar.split(';')[0].split('/')[1];
     const randomName = Uuid.v4();
