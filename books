@@ -89,7 +89,8 @@
   "genre": ["Fantasy", "Classics", "Fiction", "Adventure"],
   "hardCover": "true",
   "hardCoverPrice": "14.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 },
 
 8{
@@ -101,7 +102,8 @@
   "genre": ["Short", "Stories", "Fantasy"],
   "hardCover": "true",
   "hardCoverPrice": "5.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 },
 
 9{
@@ -113,7 +115,8 @@
   "genre": ["Fiction", "Novels", "Literary"],
   "hardCover": "true",
   "hardCoverPrice": "16.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3"
 },
 
 10{
@@ -126,7 +129,8 @@
   "hardCover": "true",
   "hardCoverPrice": "14",
   "paperback": "true",
-  "paperbackPrice": "11.99"
+  "paperbackPrice": "11.99",
+  "rating": "3.5"
 },
 11{
   "cover": "Milk-and-honey.jpg",
@@ -138,7 +142,8 @@
   "hardCover": "true",
   "hardCoverPrice": "16",
   "paperback": "false",
-  "status": "Bestseller"
+  "status": "Bestseller",
+  "rating": "3"
 },
 
 12{
@@ -150,7 +155,8 @@
   "genre": ["Poetry", "Nonfiction"],
   "hardCover": "true",
   "hardCoverPrice": "13",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 },
 
 13{
@@ -162,7 +168,8 @@
   "genre": ["Classics", "Poetry", "Fiction", "Literature"],
   "hardCover": "true",
   "hardCoverPrice": "14.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 }
 
 14{
@@ -174,7 +181,8 @@
   "genre": ["Mystery", "Thriller", "Fiction"],
   "hardCover": "true",
   "hardCoverPrice": "20",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 15{
   "cover": "Murder-on-the-Orient-Express.jpg",
@@ -185,7 +193,8 @@
   "genre": ["Mystery", "Classics", "Fiction"],
   "hardCover": "true",
   "hardCoverPrice": "11",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 16{
   "cover": "1984.jpg",
@@ -197,7 +206,8 @@
   "hardCover": "true",
   "hardCoverPrice": "10",
   "paperback": "true",
-  "paperbackPrice": "6"
+  "paperbackPrice": "6",
+  "rating": "3.5"
 }
 17{
   "cover": "Animal-Farm.jpg",
@@ -208,7 +218,8 @@
   "genre": ["Classics", "Fiction", "Fantasy", "Politics"],
   "hardCover": "true",
   "hardCoverPrice": "12",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 }
 18{
   "cover": "Dune.jpg",
@@ -219,7 +230,8 @@
   "genre": ["Science Fiction", "Fiction", "Fantasy", "Classics"],
   "hardCover": "true",
   "hardCoverPrice": "8",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 19{
   "cover": "The-Hunger-Games.jpg",
@@ -231,7 +243,8 @@
   "hardCover": "true",
   "hardCoverPrice": "17",
   "paperback": "false",
-  "status": "Bestseller"
+  "status": "Bestseller",
+  "rating": "4.5"
 }
 20{
   "cover": "Harry-Potter-and-the-Order-of-the-Phoenix.jpg",
@@ -243,7 +256,8 @@
   "hardCover": "true",
   "hardCoverPrice": "16",
   "paperback": "true",
-  "paperbackPrice": "9"
+  "paperbackPrice": "9",
+  "rating": "4.5"
 }
 21{
   "cover": "Pride-and-Prejudice.jpg",
@@ -254,7 +268,8 @@
   "genre": ["Classics", "Fiction", "Romance", "Historical"],
   "hardCover": "true",
   "hardCoverPrice": "12",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 22{
   "cover": "To-Kill-a-Mockingbird.jpg",
@@ -265,7 +280,8 @@
   "genre": ["Classics", "Fiction", "Historical"],
   "hardCover": "true",
   "hardCoverPrice": "9",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 }
 23{
   "cover": "The-Book-Thief.jpg",
@@ -276,7 +292,8 @@
   "genre": ["Historical", "Fiction", "Young Adult", "Historical"],
   "hardCover": "true",
   "hardCoverPrice": "12",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3"
 }
 24{
   "cover": "Twilight.jpg",
@@ -288,7 +305,8 @@
   "hardCover": "true",
   "hardCoverPrice": "14",
   "paperback": "true",
-  "paperbackPrice": "11"
+  "paperbackPrice": "11",
+  "rating": "4"
 }
 25{
   "cover": "The-Fault-in-Our-Stars.jpg",
@@ -299,7 +317,8 @@
   "genre": ["Young Adult", "Romance", "Fiction", "Contemporary"],
   "hardCover": "true",
   "hardCoverPrice": "8",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 }
 26{
   "cover": "Fahrenheit-451.jpg",
@@ -310,7 +329,8 @@
   "genre": ["Classics", "Fiction", "Science Fiction", "Fantasy"],
   "hardCover": "true",
   "hardCoverPrice": "17",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 27{
   "cover": "Gone-with-the-Wind.jpg",
@@ -321,7 +341,8 @@
   "genre": ["Classics", "Historical", "Fiction", "Romance"],
   "hardCover": "true",
   "hardCoverPrice": "9",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 }
 28{
   "cover": "The-Giving-Tree.jpg",
@@ -333,7 +354,8 @@
   "hardCover": "true",
   "hardCoverPrice": "10",
   "paperback": "true",
-  "paperbackPrice": "6"
+  "paperbackPrice": "6",
+  "rating": "3"
 }
 29{
   "cover": "Wuthering-Heights.jpg",
@@ -344,7 +366,8 @@
   "genre": ["Classics", "Fiction", "Romance"],
   "hardCover": "true",
   "hardCoverPrice": "11",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 }
 30{
   "cover": "Jane-Eyre.jpg",
@@ -355,7 +378,8 @@
   "genre": ["Classics", "Fiction", "Romance", "Historical"],
   "hardCover": "true",
   "hardCoverPrice": "14.99",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 31{
   "cover": "Harry-Potter-and-the-Philosopher's-Stone.jpg",
@@ -366,7 +390,8 @@
   "genre": ["Fantasy", "Young Adult", "Fiction", "Fantasy"],
   "hardCover": "true",
   "hardCoverPrice": "13",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4.5"
 }
 32{
   "cover": "The-Da-Vinci-Code.jpg",
@@ -378,7 +403,8 @@
   "hardCover": "true",
   "hardCoverPrice": "22",
   "paperback": "true",
-  "paperbackPrice": "13"
+  "paperbackPrice": "13",
+  "rating": "5"
 }
 33{
   "cover": "The-Perks-of-Being-a-Wallflower.jpg",
@@ -389,7 +415,8 @@
   "genre": ["Young Adult", "Fiction", "Contemporary", "Classics"],
   "hardCover": "true",
   "hardCoverPrice": "11",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 }
 34{
   "cover": "Memoirs-of-a-Geisha.jpg",
@@ -401,7 +428,8 @@
   "genre": ["Fiction", "Romance", "Historical", "Classics"],
   "hardCover": "true",
   "hardCoverPrice": "23",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "4"
 }
 35{
   "cover": "Alice's-Adventures-in-Wonderland.jpg",
@@ -412,7 +440,8 @@
   "genre": ["Classics", "Fantasy", "Fiction", "Childrens"],
   "hardCover": "true",
   "hardCoverPrice": "8",
-  "paperback": "false"
+  "paperback": "false",
+  "rating": "3.5"
 }
 36{
   "cover": "The-Little-Prince.jpg",
@@ -424,5 +453,6 @@
   "hardCover": "true",
   "hardCoverPrice": "9",
   "paperback": "true",
-  "paperbackPrice": "6"
+  "paperbackPrice": "6",
+  "rating": "4"
 }

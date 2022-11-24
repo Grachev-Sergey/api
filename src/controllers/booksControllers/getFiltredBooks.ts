@@ -8,6 +8,7 @@ type QueryType = {
   maxPrice?: number;
   sorting?: string;
   page?: number;
+  search?: string;
 };
 
 type ParamsType = Record<string, never>;
@@ -25,6 +26,7 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 export const getFiltredBooks: HandlerType = async (req, res, next) => {
   try {
     const { genre, minPrice, maxPrice, sorting, page } = req.query;
+    const search = `%${req.query.search}%`;
     const numberPerPage = 12;
 
     let sortBy: string;
@@ -43,6 +45,7 @@ export const getFiltredBooks: HandlerType = async (req, res, next) => {
     const filtredBooks = repositorys.bookRepository
       .createQueryBuilder('book')
       .where('book.hardCoverPrice BETWEEN :minPrice AND :maxPrice', { minPrice, maxPrice })
+      .andWhere('book.title ILIKE :search OR book.author ILIKE :search', { search })
       .orderBy(`book.${sortBy}`, 'ASC');
     if (genre.length) {
       const genreArr = genre.split(',');
