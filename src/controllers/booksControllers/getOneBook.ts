@@ -4,20 +4,22 @@ import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
 
-export const getOneBook:Handler = async (req, res, next) => {
+export const getOneBook: Handler = async (req, res, next) => {
   try {
     const bookId = Number(req.params.id);
-    const book = await repositorys.bookRepository.findOneBy({ id: bookId });
+
+    const book = await repositorys.bookRepository
+      .createQueryBuilder('book')
+      .where('book.id = :bookId', { bookId })
+      .leftJoinAndSelect('book.comments', 'comments')
+      .leftJoinAndSelect('comments.user', 'user')
+      .getOne();
+
     if (!book) {
       throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND);
     }
-    const comments = await repositorys.commentRepository
-      .createQueryBuilder('comment')
-      .where('comment.bookId = :bookId', { bookId })
-      .leftJoinAndSelect('comment.user', 'user')
-      .getMany();
 
-    return res.json({ book, comments });
+    return res.json({ book });
   } catch (err) {
     next(err);
   }

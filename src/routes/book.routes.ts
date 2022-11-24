@@ -8,6 +8,6 @@ bookRouter.get('/filtredBooks', booksControllers.getFiltredBooks);
 bookRouter.get('/recommendations', booksControllers.getRecommendedBooks);
 bookRouter.get('/', booksControllers.getAllBooks);
 bookRouter.get('/:id', booksControllers.getOneBook);
-bookRouter.put('/:id', booksControllers.updateBook);
+bookRouter.patch('/:id', booksControllers.updateBook);
 bookRouter.delete('/:id', booksControllers.deleteBook);
 export { bookRouter };

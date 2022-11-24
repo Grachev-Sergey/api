@@ -4,21 +4,20 @@ import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { CART_IS_EMPTY } from '../../utils/error/errorsText';
 
-export const getBooksFromCart:Handler = async (req, res, next) => {
+export const removeAllBooksFromCart:Handler = async (req, res, next) => {
   try {
     const { userId } = req.query;
 
-    const cart = await repositorys.cartRepository
+    const foundCart = await repositorys.cartRepository
       .createQueryBuilder('cart')
       .where('cart.userId = :userId', { userId })
-      .leftJoinAndSelect('cart.book', 'book')
       .getMany();
 
-    if (!cart) {
+    if (!foundCart) {
       throw customError(StatusCodes.NOT_FOUND, CART_IS_EMPTY);
     }
-
-    return res.json({ cart });
+    await repositorys.cartRepository.remove(foundCart);
+    return res.sendStatus(StatusCodes.NO_CONTENT);
   } catch (err) {
     next(err);
   }

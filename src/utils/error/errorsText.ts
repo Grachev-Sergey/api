@@ -10,3 +10,4 @@ export const BOOK_NOT_FOUND = 'Book not found';
 export const BOOKS_NOT_FOUND = 'Books not found';
 export const BOOK_NOT_FOUND_IN_FAVORITES = 'Book not found in favorites';
 export const CART_IS_EMPTY = 'Cart is empty';
+export const NOT_FOUND_ITEM_IN_CART = 'Not found item in cart';

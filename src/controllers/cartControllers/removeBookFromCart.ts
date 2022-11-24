@@ -2,21 +2,21 @@ import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
-import { BOOK_NOT_FOUND_IN_FAVORITES } from '../../utils/error/errorsText';
+import { NOT_FOUND_ITEM_IN_CART } from '../../utils/error/errorsText';
 
 export const removeBookFromCart:Handler = async (req, res, next) => {
   try {
-    const { userId, bookId } = req.query;
+    const { cartId } = req.query;
 
     const foundInCart = await repositorys.cartRepository
       .createQueryBuilder('cart')
-      .where('cart.userId = :userId AND cart.bookId = :bookId', { userId, bookId })
+      .where('cart.id = :cartId', { cartId })
       .getOne();
 
     if (!foundInCart) {
-      throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND_IN_FAVORITES);
+      throw customError(StatusCodes.NOT_FOUND, NOT_FOUND_ITEM_IN_CART);
     }
-    await repositorys.favoriteRepository.remove(foundInCart);
+    await repositorys.cartRepository.remove(foundInCart);
     return res.sendStatus(StatusCodes.NO_CONTENT);
   } catch (err) {
     next(err);
