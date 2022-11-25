@@ -11,11 +11,14 @@ export const login:Handler = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 
-    const user = await repositorys.userRepository.findOne(
-      {
-        where: { email },
-      },
-    );
+    const user = await repositorys.userRepository
+      .createQueryBuilder('user')
+      .where('user.email = :email', { email })
+      .leftJoinAndSelect('user.rating', 'rating')
+      .leftJoinAndSelect('user.favorite', 'favorite')
+      .leftJoinAndSelect('user.cart', 'cart')
+      .getOne();
+
     if (!user) {
       throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
     }

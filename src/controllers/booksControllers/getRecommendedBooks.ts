@@ -6,17 +6,7 @@ import { BOOKS_NOT_FOUND } from '../../utils/error/errorsText';
 
 export const getRecommendedBooks:Handler = async (req, res, next) => {
   try {
-    const { window, id } = req.query;
-
-    let numberOfBooks = 0;
-
-    if (Number(window) > 1280) {
-      numberOfBooks = 4;
-    } else if (Number(window) > 834 && Number(window) < 1280) {
-      numberOfBooks = 3;
-    } else {
-      numberOfBooks = 2;
-    }
+    const { id } = req.query;
 
     const books = await repositorys.bookRepository
       .createQueryBuilder('books')
@@ -27,7 +17,7 @@ export const getRecommendedBooks:Handler = async (req, res, next) => {
 
     const recommended = books.filter((item) => item.id !== Number(id))
       .sort(() => Math.random() - 0.5)
-      .slice(0, numberOfBooks);
+      .slice(0, 4);
 
     return res.json({ recommended });
   } catch (err) {
