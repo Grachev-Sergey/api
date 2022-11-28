@@ -1,10 +1,25 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import type { Cart } from '../../db/entitys/Cart';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { CART_IS_EMPTY } from '../../utils/error/errorsText';
 
-export const getBooksFromCart:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  cart: Cart[];
+};
+
+type BodyType = Record<string, never>;
+
+type QueryType = {
+  userId: number;
+};
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const getBooksFromCart:HandlerType = async (req, res, next) => {
   try {
     const { userId } = req.query;
 

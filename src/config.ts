@@ -4,7 +4,6 @@ dotenv.config();
 
 export const config = {
   serverPort: Number(process.env.PORT),
-  front: Number(process.env.PORT),
   db: {
     name: process.env.DB_NAME,
     user: process.env.DB_USER,

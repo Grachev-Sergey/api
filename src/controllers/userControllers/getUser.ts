@@ -1,12 +1,25 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
+import type { User } from '../../db/entitys/User';
 import { config } from '../../config';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND } from '../../utils/error/errorsText';
 
-export const getUser:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  user: User;
+};
+
+type BodyType = Record<string, never>;
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const getUser:HandlerType = async (req, res, next) => {
   try {
     const authHeader = req.headers.authorization;
     const token = authHeader.split(' ')[1];

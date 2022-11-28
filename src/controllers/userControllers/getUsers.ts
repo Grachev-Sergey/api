@@ -1,7 +1,20 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
+import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
 
-export const getUsers:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  users: User[];
+};
+
+type BodyType = Record<string, never>;
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const getUsers:HandlerType = async (req, res, next) => {
   try {
     const users = await repositorys.userRepository.find();
     return res.json({ users });

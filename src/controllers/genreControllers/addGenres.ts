@@ -1,12 +1,24 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { repositorys } from '../../db';
 import { Genre } from '../../db/entitys/Genre';
 
-export const addGenre:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  message: string;
+};
+
+type BodyType = {
+  name: string;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const addGenre:HandlerType = async (req, res, next) => {
   try {
-    const {
-      name,
-    } = req.body;
+    const { name } = req.body;
 
     const genre = new Genre();
     genre.name = name;

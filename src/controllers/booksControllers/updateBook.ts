@@ -1,10 +1,38 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import type { Book } from '../../db/entitys/Book';
+import type { Genre } from '../../db/entitys/Genre';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
 
-export const updateBook:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  book: Book;
+  message: string;
+};
+
+type BodyType = {
+  cover?: string;
+  title?: string;
+  author?: string;
+  description?: string;
+  dateOfIssue?: string;
+  genre?: Genre[];
+  hardCover?: boolean;
+  hardCoverPrice?: number;
+  paperback?: boolean;
+  paperbackPrice?: number;
+  status?: string;
+  rating?: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const updateBook:HandlerType = async (req, res, next) => {
   try {
     const {
       cover,
@@ -38,7 +66,7 @@ export const updateBook:Handler = async (req, res, next) => {
     book.status = status;
 
     await repositorys.bookRepository.save(book);
-    return res.json({ book, massage: 'Book data updated successfully' });
+    return res.json({ book, message: 'Book data updated successfully' });
   } catch (err) {
     next(err);
   }

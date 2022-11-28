@@ -1,9 +1,22 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import type { Genre } from '../../db/entitys/Genre';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 
-export const getAllGenres:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  genres: Genre[];
+};
+
+type BodyType = Record<string, never>;
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const getAllGenres:HandlerType = async (req, res, next) => {
   try {
     const genres = await repositorys.genreRepository.find();
     if (!genres) {

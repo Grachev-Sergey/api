@@ -1,13 +1,31 @@
 import * as bcrypt from 'bcryptjs';
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
 import { generateToken } from '../../utils/tokenGenerator';
 import { config } from '../../config';
 
-export const login:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  user: User;
+  token: string;
+  message: string;
+};
+
+type BodyType = {
+  email: string;
+  password: string;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const login:HandlerType = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 

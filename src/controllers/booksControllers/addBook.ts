@@ -1,11 +1,36 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { Any } from 'typeorm';
 
 import { repositorys } from '../../db';
 import { config } from '../../config';
 import { Book } from '../../db/entitys/Book';
 
-export const addBook: Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  message: string;
+};
+
+type BodyType = {
+  cover: string;
+  title: string;
+  author: string;
+  description: string;
+  dateOfIssue: string;
+  genre: string[];
+  hardCover: boolean;
+  hardCoverPrice: number;
+  paperback: boolean;
+  paperbackPrice: number;
+  status: string;
+  rating: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const addBook: HandlerType = async (req, res, next) => {
   try {
     const {
       cover,

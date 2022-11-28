@@ -1,12 +1,30 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
+import type { User } from '../../db/entitys/User';
 import { config } from '../../config';
 import { customError } from '../../utils/error/customError';
 import { WRONG_PASS } from '../../utils/error/errorsText';
 import { repositorys } from '../../db';
 
-export const updateUserPass: Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  user: User;
+  message: string;
+};
+
+type BodyType = {
+  oldPassword: string;
+  newPassword: string;
+  userId: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const updateUserPass: HandlerType = async (req, res, next) => {
   try {
     const { oldPassword, newPassword } = req.body;
     const userId = Number(req.body.userId);

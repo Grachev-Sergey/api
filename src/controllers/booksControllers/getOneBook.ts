@@ -1,10 +1,25 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+import type { Book } from '../../db/entitys/Book';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
 
-export const getOneBook: Handler = async (req, res, next) => {
+type ParamsType = {
+  id: string;
+};
+
+type ResponseType = {
+  book: Book;
+};
+
+type BodyType = Record<string, never>;
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const getOneBook: HandlerType = async (req, res, next) => {
   try {
     const bookId = Number(req.params.id);
 

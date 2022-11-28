@@ -1,9 +1,24 @@
-import type { Handler } from 'express';
-// import * as jwt from 'jsonwebtoken';
+import type { RequestHandler } from 'express';
 import { config } from '../../config';
 import { repositorys } from '../../db';
 
-export const updateUserInfo: Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  message: string;
+};
+
+type BodyType = {
+  fullName: string;
+  email: string;
+  userId: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const updateUserInfo: HandlerType = async (req, res, next) => {
   try {
     const { fullName, email, userId } = req.body;
 
@@ -12,7 +27,7 @@ export const updateUserInfo: Handler = async (req, res, next) => {
     user.email = email;
 
     await repositorys.userRepository.save(user);
-    return res.json({ massage: config.apiMessage.UPDATE_USER });
+    return res.json({ message: config.apiMessage.UPDATE_USER });
   } catch (err) {
     next(err);
   }

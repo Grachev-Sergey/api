@@ -1,9 +1,23 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 
 import { Comment } from '../../db/entitys/Comments';
 import { repositorys } from '../../db';
 
-export const addComment:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = Comment;
+
+type BodyType = {
+  bookId: number;
+  userId: number;
+  commentText: string;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const addComment:HandlerType = async (req, res, next) => {
   try {
     const { bookId, userId, commentText } = req.body;
 

@@ -1,9 +1,25 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import { Rating } from '../../db/entitys/Rating';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
+
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  rating: number;
+};
+
+type BodyType = {
+  bookId: number;
+  userId: number;
+  rating: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
 const changeBookRating = async (bookId: number) => {
   const bookRating = await repositorys.ratingRepository.createQueryBuilder('rating')
@@ -18,7 +34,7 @@ const changeBookRating = async (bookId: number) => {
   return Number((sumRating / bookRating.length).toFixed(1));
 };
 
-export const changeRating:Handler = async (req, res, next) => {
+export const changeRating:HandlerType = async (req, res, next) => {
   try {
     const { bookId, userId, rating } = req.body;
 

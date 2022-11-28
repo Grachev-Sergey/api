@@ -1,9 +1,25 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import * as fs from 'node:fs/promises';
 import * as Uuid from 'uuid';
+import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
 
-export const updateUserPhoto: Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  user: User;
+};
+
+type BodyType = {
+  avatar: string;
+  userId: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const updateUserPhoto: HandlerType = async (req, res, next) => {
   try {
     const { avatar, userId } = req.body;
     const user = await repositorys.userRepository.findOneBy({ id: userId });

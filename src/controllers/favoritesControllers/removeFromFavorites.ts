@@ -1,10 +1,23 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND_IN_FAVORITES } from '../../utils/error/errorsText';
 
-export const removeFromFavorites:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = Record<string, never>;
+
+type BodyType = Record<string, never>;
+
+type QueryType = {
+  userId: number;
+  bookId: number;
+};
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const removeFromFavorites:HandlerType = async (req, res, next) => {
   try {
     const { userId, bookId } = req.query;
 

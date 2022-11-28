@@ -1,11 +1,26 @@
-import type { Handler } from 'express';
+import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import { Favorite } from '../../db/entitys/Favorite';
 import { customError } from '../../utils/error/customError';
 import { BOOK_NOT_FOUND, USER_NOT_FOUND } from '../../utils/error/errorsText';
 
-export const addToFavorites:Handler = async (req, res, next) => {
+type ParamsType = Record<string, never>;
+
+type ResponseType = {
+  isInFavorite: boolean;
+};
+
+type BodyType = {
+  userId: number;
+  bookId: number;
+};
+
+type QueryType = Record<string, never>;
+
+type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
+
+export const addToFavorites:HandlerType = async (req, res, next) => {
   try {
     const { userId, bookId } = req.body;
 
