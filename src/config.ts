@@ -1,28 +1,31 @@
 import * as dotenv from 'dotenv';
+import * as fs from 'fs';
+// import * as path from 'path';
+
+// const localEnv = dotenv.parse(fs.readFileSync(path.resolve(`${__dirname}/../.env`)));
+// const defaultEnv = dotenv.parse(fs.readFileSync(path.resolve(`${__dirname}/../default.env`)));
+
+const localEnv = dotenv.parse(fs.readFileSync('.env'));
+const defaultEnv = dotenv.parse(fs.readFileSync('default.env'));
+
+const combinedEnv = {
+  ...localEnv,
+  ...defaultEnv,
+};
 
 dotenv.config();
 
 export const config = {
-  serverPort: Number(process.env.PORT),
+  serverPort: Number(combinedEnv.PORT),
   db: {
-    name: process.env.DB_NAME,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASS,
-    host: process.env.DB_HOST,
-    port: Number(process.env.DB_PORT),
+    name: combinedEnv.DB_NAME,
+    user: combinedEnv.DB_USER,
+    password: combinedEnv.DB_PASS,
+    host: combinedEnv.DB_HOST,
+    port: Number(combinedEnv.DB_PORT),
   },
   token: {
-    secretKey: process.env.TOKEN_SEKRET_KEY,
-    expiresIN: process.env.TOKEN_EXPIRES_IN,
-  },
-  apiMessage: {
-    CONECTING: 'Database conected',
-    LISTENING: 'Server is listening on port',
-    LOGIN_SUCCESS: 'Login completed successfully',
-    REGISTRATION_SUCCESS: 'Registration completed successfully',
-    DELETED: 'User deleted',
-    UPDATE_USER: 'User data updated successfully',
-    BOOK_ADDED: 'Book added',
-    BOOK_DELETED: 'Book deleted',
+    secretKey: combinedEnv.TOKEN_SEKRET_KEY,
+    expiresIN: combinedEnv.TOKEN_EXPIRES_IN,
   },
 };

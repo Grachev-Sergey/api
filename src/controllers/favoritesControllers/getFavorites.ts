@@ -2,8 +2,8 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import type { Favorite } from '../../db/entitys/Favorite';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { BOOKS_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -28,7 +28,7 @@ export const getFavorites:HandlerType = async (req, res, next) => {
       .getMany();
 
     if (!favoriteBooks) {
-      throw customError(StatusCodes.NOT_FOUND, BOOKS_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOKS_NOT_FOUND);
     }
     return res.json(favoriteBooks);
   } catch (err) {

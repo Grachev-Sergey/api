@@ -2,8 +2,8 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import { Rating } from '../../db/entitys/Rating';
-import { customError } from '../../utils/error/customError';
-import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -41,7 +41,7 @@ export const changeRating:HandlerType = async (req, res, next) => {
     const book = await repositorys.bookRepository.findOneBy({ id: bookId });
 
     if (!book) {
-      throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOK_NOT_FOUND);
     }
 
     const allRateing = await repositorys.ratingRepository.createQueryBuilder('rating')

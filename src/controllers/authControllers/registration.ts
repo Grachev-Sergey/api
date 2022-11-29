@@ -1,12 +1,12 @@
 import * as bcrypt from 'bcryptjs';
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
-import { EMAIL_USED } from '../../utils/error/errorsText';
+import errorsMessage from '../../utils/errorsMessage';
 import { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
+import { customError } from '../../utils/customError';
 import { generateToken } from '../../utils/tokenGenerator';
-import { config } from '../../config';
+import succsessMessage from '../../utils/succsessMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -30,7 +30,7 @@ export const registrationUser:HandlerType = async (req, res, next) => {
     const { email, password } = req.body;
     const checkUniq = await repositorys.userRepository.findOneBy({ email });
     if (checkUniq) {
-      throw customError(StatusCodes.BAD_REQUEST, EMAIL_USED);
+      throw customError(StatusCodes.BAD_REQUEST, errorsMessage.EMAIL_USED);
     }
 
     const user = new User();
@@ -41,7 +41,7 @@ export const registrationUser:HandlerType = async (req, res, next) => {
     const token = generateToken(user.id);
     delete user.password;
 
-    return res.json({ user, token, message: config.apiMessage.REGISTRATION_SUCCESS });
+    return res.json({ user, token, message: succsessMessage.REGISTRATION_SUCCESS });
   } catch (err) {
     next(err);
   }

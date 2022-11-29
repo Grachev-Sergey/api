@@ -2,9 +2,9 @@ import type { RequestHandler } from 'express';
 import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 import type { User } from '../../db/entitys/User';
-import { config } from '../../config';
-import { customError } from '../../utils/error/customError';
-import { WRONG_PASS } from '../../utils/error/errorsText';
+import succsessMessage from '../../utils/succsessMessage';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 import { repositorys } from '../../db';
 
 type ParamsType = Record<string, never>;
@@ -38,14 +38,14 @@ export const updateUserPass: HandlerType = async (req, res, next) => {
 
     const validPass = bcrypt.compareSync(oldPassword, currentUserPass.user_password);
     if (!validPass) {
-      throw customError(StatusCodes.BAD_REQUEST, WRONG_PASS);
+      throw customError(StatusCodes.BAD_REQUEST, errorsMessage.WRONG_PASS);
     }
 
     user.password = bcrypt.hashSync(newPassword, 5);
 
     await repositorys.userRepository.save(user);
     delete user.password;
-    return res.json({ user, message: config.apiMessage.UPDATE_USER });
+    return res.json({ user, message: succsessMessage.UPDATE_USER });
   } catch (err) {
     next(err);
   }

@@ -1,5 +1,5 @@
 import type { RequestHandler } from 'express';
-import { config } from '../../config';
+import succsessMessage from '../../utils/succsessMessage';
 import { repositorys } from '../../db';
 
 type ParamsType = Record<string, never>;
@@ -27,7 +27,7 @@ export const updateUserInfo: HandlerType = async (req, res, next) => {
     user.email = email;
 
     await repositorys.userRepository.save(user);
-    return res.json({ message: config.apiMessage.UPDATE_USER });
+    return res.json({ message: succsessMessage.UPDATE_USER });
   } catch (err) {
     next(err);
   }

@@ -3,10 +3,10 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { USER_NOT_FOUND, WRONG_PASS } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 import { generateToken } from '../../utils/tokenGenerator';
-import { config } from '../../config';
+import succsessMessage from '../../utils/succsessMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -38,7 +38,7 @@ export const login:HandlerType = async (req, res, next) => {
       .getOne();
 
     if (!user) {
-      throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
     }
 
     const currentUserPass = await repositorys.userRepository
@@ -49,11 +49,11 @@ export const login:HandlerType = async (req, res, next) => {
 
     const validPass = bcrypt.compareSync(password, currentUserPass.user_password);
     if (!validPass) {
-      throw customError(StatusCodes.BAD_REQUEST, WRONG_PASS);
+      throw customError(StatusCodes.BAD_REQUEST, errorsMessage.WRONG_PASS);
     }
 
     const token = generateToken(user.id);
-    return res.json({ user, token, message: config.apiMessage.LOGIN_SUCCESS });
+    return res.json({ user, token, message: succsessMessage.LOGIN_SUCCESS });
   } catch (err) {
     next(err);
   }

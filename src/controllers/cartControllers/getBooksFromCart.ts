@@ -2,8 +2,8 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import type { Cart } from '../../db/entitys/Cart';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { CART_IS_EMPTY } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -30,7 +30,7 @@ export const getBooksFromCart:HandlerType = async (req, res, next) => {
       .getMany();
 
     if (!cart) {
-      throw customError(StatusCodes.NOT_FOUND, CART_IS_EMPTY);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.CART_IS_EMPTY);
     }
 
     return res.json({ cart });

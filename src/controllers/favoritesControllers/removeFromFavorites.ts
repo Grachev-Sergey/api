@@ -1,8 +1,8 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { BOOK_NOT_FOUND_IN_FAVORITES } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -27,7 +27,7 @@ export const removeFromFavorites:HandlerType = async (req, res, next) => {
       .getOne();
 
     if (!foundInFavorites) {
-      throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND_IN_FAVORITES);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOK_NOT_FOUND_IN_FAVORITES);
     }
     await repositorys.favoriteRepository.remove(foundInFavorites);
     return res.sendStatus(StatusCodes.NO_CONTENT);

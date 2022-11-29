@@ -1,8 +1,8 @@
 import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
-import { customError } from '../utils/error/customError';
-import { INCORRECT_DATA } from '../utils/error/errorsText';
+import { customError } from '../utils/customError';
+import errorMessage from '../utils/errorsMessage';
 import type { SchemaType } from '../schema/schemaType';
 
 export const validationSchema = (schema: SchemaType): Handler => async (req, res, next) => {
@@ -13,7 +13,7 @@ export const validationSchema = (schema: SchemaType): Handler => async (req, res
   } catch (err) {
     if (err instanceof yup.ValidationError) {
       return next(
-        customError(StatusCodes.BAD_REQUEST, INCORRECT_DATA),
+        customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA),
       );
     }
     next(err);

@@ -4,8 +4,8 @@ import { StatusCodes } from 'http-status-codes';
 import type { User } from '../../db/entitys/User';
 import { config } from '../../config';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { USER_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -35,7 +35,7 @@ export const getUser:HandlerType = async (req, res, next) => {
       .getOne();
 
     if (!user) {
-      throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
     }
 
     return res.json({ user });

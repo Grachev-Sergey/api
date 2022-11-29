@@ -1,8 +1,8 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { CART_IS_EMPTY } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -26,7 +26,7 @@ export const removeAllBooksFromCart:HandlerType = async (req, res, next) => {
       .getMany();
 
     if (!foundCart) {
-      throw customError(StatusCodes.NOT_FOUND, CART_IS_EMPTY);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.CART_IS_EMPTY);
     }
     await repositorys.cartRepository.remove(foundCart);
     return res.sendStatus(StatusCodes.NO_CONTENT);

@@ -2,7 +2,7 @@ import type { RequestHandler } from 'express';
 import { Any } from 'typeorm';
 
 import { repositorys } from '../../db';
-import { config } from '../../config';
+import succsessMessage from '../../utils/succsessMessage';
 import { Book } from '../../db/entitys/Book';
 
 type ParamsType = Record<string, never>;
@@ -70,7 +70,7 @@ export const addBook: HandlerType = async (req, res, next) => {
     book.genre = arr;
 
     await repositorys.bookRepository.save(book);
-    return res.json({ message: config.apiMessage.BOOK_ADDED });
+    return res.json({ message: succsessMessage.BOOK_ADDED });
   } catch (err) {
     next(err);
   }

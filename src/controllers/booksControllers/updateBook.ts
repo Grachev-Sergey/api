@@ -3,8 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 import type { Book } from '../../db/entitys/Book';
 import type { Genre } from '../../db/entitys/Genre';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -50,7 +50,7 @@ export const updateBook:HandlerType = async (req, res, next) => {
 
     const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.id) });
     if (!book) {
-      throw customError(StatusCodes.BAD_REQUEST, BOOK_NOT_FOUND);
+      throw customError(StatusCodes.BAD_REQUEST, errorsMessage.BOOK_NOT_FOUND);
     }
 
     book.cover = cover;

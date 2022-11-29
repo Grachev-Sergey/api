@@ -2,8 +2,8 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 import type { Book } from '../../db/entitys/Book';
-import { customError } from '../../utils/error/customError';
-import { BOOKS_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -27,7 +27,7 @@ export const getRecommendedBooks:HandlerType = async (req, res, next) => {
       .createQueryBuilder('books')
       .getMany();
     if (!books) {
-      throw customError(StatusCodes.NOT_FOUND, BOOKS_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOKS_NOT_FOUND);
     }
 
     const recommended = books.filter((item) => item.id !== Number(id))

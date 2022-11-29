@@ -1,8 +1,8 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { NOT_FOUND_ITEM_IN_CART } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -26,7 +26,7 @@ export const removeBookFromCart:HandlerType = async (req, res, next) => {
       .getOne();
 
     if (!foundInCart) {
-      throw customError(StatusCodes.NOT_FOUND, NOT_FOUND_ITEM_IN_CART);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.NOT_FOUND_ITEM_IN_CART);
     }
     await repositorys.cartRepository.remove(foundInCart);
     return res.sendStatus(StatusCodes.NO_CONTENT);

@@ -2,8 +2,8 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import type { Book } from '../../db/entitys/Book';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/error/customError';
-import { BOOK_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = {
   id: string;
@@ -31,7 +31,7 @@ export const getOneBook: HandlerType = async (req, res, next) => {
       .getOne();
 
     if (!book) {
-      throw customError(StatusCodes.NOT_FOUND, BOOK_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOK_NOT_FOUND);
     }
 
     return res.json({ book });

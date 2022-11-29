@@ -1,8 +1,8 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import type { User } from '../../db/entitys/User';
-import { customError } from '../../utils/error/customError';
-import { USER_NOT_FOUND } from '../../utils/error/errorsText';
+import { customError } from '../../utils/customError';
+import errorsMessage from '../../utils/errorsMessage';
 import { repositorys } from '../../db';
 
 type ParamsType = {
@@ -26,7 +26,7 @@ export const getUserById:HandlerType = async (req, res, next) => {
       .where('user.id = :userId', { userId })
       .getOne();
     if (!user) {
-      throw customError(StatusCodes.NOT_FOUND, USER_NOT_FOUND);
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
     }
 
     return res.json({ user });
