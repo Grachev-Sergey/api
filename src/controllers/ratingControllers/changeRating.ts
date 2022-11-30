@@ -8,6 +8,9 @@ import errorsMessage from '../../utils/errorsMessage';
 type ParamsType = Record<string, never>;
 
 type ResponseType = {
+  id: number;
+  bookId: number;
+  userId: number;
   rating: number;
 };
 
@@ -44,14 +47,14 @@ export const changeRating:HandlerType = async (req, res, next) => {
       throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOK_NOT_FOUND);
     }
 
-    const allRateing = await repositorys.ratingRepository.createQueryBuilder('rating')
+    const ratedItem = await repositorys.ratingRepository.createQueryBuilder('rating')
       .where('rating.userId = :userId AND rating.bookId = :bookId', { userId, bookId })
       .getOne();
 
-    if (allRateing) {
-      allRateing.rating = rating;
+    if (ratedItem) {
+      ratedItem.rating = rating;
 
-      await repositorys.ratingRepository.save(allRateing);
+      await repositorys.ratingRepository.save(ratedItem);
 
       const resultRating = await changeBookRating(bookId);
 
@@ -59,7 +62,7 @@ export const changeRating:HandlerType = async (req, res, next) => {
 
       await repositorys.bookRepository.save(book);
 
-      return res.json({ rating: book.rating });
+      return res.json(ratedItem);
     }
 
     const newRating = new Rating();
@@ -75,7 +78,7 @@ export const changeRating:HandlerType = async (req, res, next) => {
 
     await repositorys.bookRepository.save(book);
 
-    return res.json({ rating: book.rating });
+    return res.json(newRating);
   } catch (err) {
     next(err);
   }
