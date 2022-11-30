@@ -8,7 +8,9 @@ import errorsMessage from '../../utils/errorsMessage';
 type ParamsType = Record<string, never>;
 
 type ResponseType = {
-  isInFavorite: boolean;
+  id: number;
+  bookId: number;
+  userId: number;
 };
 
 type BodyType = {
@@ -42,7 +44,13 @@ export const addToFavorites:HandlerType = async (req, res, next) => {
 
     await repositorys.favoriteRepository.save(favorite);
 
-    return res.json({ isInFavorite: true });
+    const favoriteItem = {
+      id: favorite.id,
+      bookId: favorite.bookId,
+      userId: favorite.userId,
+    };
+
+    return res.json(favoriteItem);
   } catch (err) {
     next(err);
   }

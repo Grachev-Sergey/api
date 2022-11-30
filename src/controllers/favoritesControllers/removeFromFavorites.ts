@@ -6,7 +6,9 @@ import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
-type ResponseType = Record<string, never>;
+type ResponseType = {
+  id: number;
+};
 
 type BodyType = Record<string, never>;
 
@@ -29,8 +31,11 @@ export const removeFromFavorites:HandlerType = async (req, res, next) => {
     if (!foundInFavorites) {
       throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOK_NOT_FOUND_IN_FAVORITES);
     }
+
+    const id = foundInFavorites.id;
     await repositorys.favoriteRepository.remove(foundInFavorites);
-    return res.sendStatus(StatusCodes.NO_CONTENT);
+
+    return res.json({ id });
   } catch (err) {
     next(err);
   }
