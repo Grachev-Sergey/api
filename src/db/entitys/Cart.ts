@@ -19,6 +19,9 @@ export class Cart {
   @Column({ type: 'float' })
     price: number;
 
+  @Column({ type: 'real', default: 1 })
+    numberOfCopies: number;
+
   @ManyToOne(() => User)
   @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
     user: User;
