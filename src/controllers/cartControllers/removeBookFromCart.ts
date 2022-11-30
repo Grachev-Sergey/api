@@ -6,7 +6,9 @@ import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
-type ResponseType = Record<string, never>;
+type ResponseType = {
+  id: number;
+};
 
 type BodyType = Record<string, never>;
 
@@ -28,8 +30,9 @@ export const removeBookFromCart:HandlerType = async (req, res, next) => {
     if (!foundInCart) {
       throw customError(StatusCodes.NOT_FOUND, errorsMessage.NOT_FOUND_ITEM_IN_CART);
     }
+    const id = foundInCart.id;
     await repositorys.cartRepository.remove(foundInCart);
-    return res.sendStatus(StatusCodes.NO_CONTENT);
+    return res.json({ id });
   } catch (err) {
     next(err);
   }

@@ -8,7 +8,11 @@ import errorsMessage from '../../utils/errorsMessage';
 type ParamsType = Record<string, never>;
 
 type ResponseType = {
-  isInCart: boolean;
+  id: number;
+  bookCover: string;
+  bookId: number;
+  price: number;
+  userId: number;
 };
 
 type BodyType = {
@@ -46,7 +50,15 @@ export const addToCart:HandlerType = async (req, res, next) => {
 
     await repositorys.cartRepository.save(cart);
 
-    return res.json({ isInCart: true });
+    const newCartItem = {
+      id: cart.id,
+      bookCover: cart.bookCover,
+      bookId: cart.bookId,
+      price: cart.price,
+      userId: cart.userId,
+    };
+
+    return res.json(newCartItem);
   } catch (err) {
     next(err);
   }
