@@ -1,11 +1,11 @@
 import type { RequestHandler } from 'express';
-import succsessMessage from '../../utils/succsessMessage';
 import { repositorys } from '../../db';
+import type { User } from '../../db/entitys/User';
 
 type ParamsType = Record<string, never>;
 
 type ResponseType = {
-  message: string;
+  user: User;
 };
 
 type BodyType = {
@@ -27,7 +27,14 @@ export const updateUserInfo: HandlerType = async (req, res, next) => {
     user.email = email;
 
     await repositorys.userRepository.save(user);
-    return res.json({ message: succsessMessage.UPDATE_USER });
+    const userWithNewInfo = await repositorys.userRepository
+      .createQueryBuilder('user')
+      .where('user.id = :userId', { userId })
+      .leftJoinAndSelect('user.rating', 'rating')
+      .leftJoinAndSelect('user.favorite', 'favorite')
+      .leftJoinAndSelect('user.cart', 'cart')
+      .getOne();
+    return res.json({ user: userWithNewInfo });
   } catch (err) {
     next(err);
   }

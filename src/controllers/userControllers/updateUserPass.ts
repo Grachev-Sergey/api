@@ -45,7 +45,15 @@ export const updateUserPass: HandlerType = async (req, res, next) => {
 
     await repositorys.userRepository.save(user);
     delete user.password;
-    return res.json({ user, message: succsessMessage.UPDATE_USER });
+
+    const userWithNewPass = await repositorys.userRepository
+      .createQueryBuilder('user')
+      .where('user.id = :userId', { userId })
+      .leftJoinAndSelect('user.rating', 'rating')
+      .leftJoinAndSelect('user.favorite', 'favorite')
+      .leftJoinAndSelect('user.cart', 'cart')
+      .getOne();
+    return res.json({ user: userWithNewPass, message: succsessMessage.UPDATE_USER });
   } catch (err) {
     next(err);
   }

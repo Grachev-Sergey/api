@@ -38,7 +38,15 @@ export const updateUserPhoto: HandlerType = async (req, res, next) => {
 
     user.avatar = avatarName;
     await repositorys.userRepository.save(user);
-    return res.json({ user });
+
+    const userWithNewAvatar = await repositorys.userRepository
+      .createQueryBuilder('user')
+      .where('user.id = :userId', { userId })
+      .leftJoinAndSelect('user.rating', 'rating')
+      .leftJoinAndSelect('user.favorite', 'favorite')
+      .leftJoinAndSelect('user.cart', 'cart')
+      .getOne();
+    return res.json({ user: userWithNewAvatar });
   } catch (err) {
     next(err);
   }
