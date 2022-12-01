@@ -1,4 +1,5 @@
 import type { RequestHandler } from 'express';
+
 import { repositorys } from '../../db';
 import type { User } from '../../db/entitys/User';
 

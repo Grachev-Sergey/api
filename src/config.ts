@@ -17,6 +17,7 @@ dotenv.config();
 
 export const config = {
   serverPort: Number(combinedEnv.PORT),
+  frontPort: Number(combinedEnv.FRONT),
   db: {
     name: combinedEnv.DB_NAME,
     user: combinedEnv.DB_USER,

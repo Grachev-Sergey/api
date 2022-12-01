@@ -1,6 +1,9 @@
 import * as express from 'express';
+
 import { validationSchema } from '../middleware/validationSchema';
+
 import authControllers from '../controllers/authControllers';
+
 import schema from '../schema';
 
 const authenticationRouter = express.Router();

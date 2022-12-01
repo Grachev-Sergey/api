@@ -1,8 +1,9 @@
 import type { RequestHandler } from 'express';
 import * as fs from 'node:fs/promises';
 import * as Uuid from 'uuid';
-import type { User } from '../../db/entitys/User';
+
 import { repositorys } from '../../db';
+import type { User } from '../../db/entitys/User';
 
 type ParamsType = Record<string, never>;
 

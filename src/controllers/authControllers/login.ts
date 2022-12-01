@@ -1,8 +1,10 @@
-import * as bcrypt from 'bcryptjs';
 import type { RequestHandler } from 'express';
+import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
+
 import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
+
 import { customError } from '../../utils/customError';
 import errorsMessage from '../../utils/errorsMessage';
 import { generateToken } from '../../utils/tokenGenerator';

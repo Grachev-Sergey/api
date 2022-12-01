@@ -1,31 +1,29 @@
 import * as express from 'express';
+
 import { tokenVerification } from '../middleware/tokenVerification';
-import userControllers from '../controllers/userControllers';
 import { validationSchema } from '../middleware/validationSchema';
+
+import userControllers from '../controllers/userControllers';
+
 import schema from '../schema';
 
 const userRouter = express.Router();
+userRouter.use(tokenVerification);
 
 userRouter.get('/',
-  tokenVerification,
   userControllers.getUser);
 userRouter.get('/getById/:id', userControllers.getUserById);
 userRouter.get('/all',
-  tokenVerification,
   userControllers.getUsers);
 userRouter.patch('/changeinfo',
-  tokenVerification,
   validationSchema(schema.updateUserInfoSchema),
   userControllers.updateUserInfo);
 userRouter.patch('/changepass',
-  tokenVerification,
   validationSchema(schema.updateUserPassSchema),
   userControllers.updateUserPass);
 userRouter.patch('/uploadphoto',
-  tokenVerification,
   userControllers.updateUserPhoto);
 userRouter.delete('/:id',
-  tokenVerification,
   userControllers.deleteUser);
 
 export { userRouter };

@@ -1,8 +1,10 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+
+import { repositorys } from '../../db';
 import type { Book } from '../../db/entitys/Book';
 import type { Genre } from '../../db/entitys/Genre';
-import { repositorys } from '../../db';
+
 import { customError } from '../../utils/customError';
 import errorsMessage from '../../utils/errorsMessage';
 

@@ -1,8 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToMany, AfterLoad } from 'typeorm';
-import { addUserUrl } from '../../utils/addUrl';
+
 import { Cart } from './Cart';
 import { Favorite } from './Favorite';
 import { Rating } from './Rating';
+
+import { addUserUrl } from '../../utils/addUrl';
 
 @Entity()
 export class User {

@@ -1,4 +1,5 @@
 import * as express from 'express';
+
 import genreControllers from '../controllers/genreControllers';
 
 const genreRouter = express.Router();

@@ -1,10 +1,12 @@
 import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as jwt from 'jsonwebtoken';
+
 import { config } from '../config';
+import { repositorys } from '../db';
+
 import { customError } from '../utils/customError';
 import errorMessage from '../utils/errorsMessage';
-import { repositorys } from '../db';
 
 export const tokenVerification: Handler = async (req, res, next) => {
   try {

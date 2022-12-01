@@ -1,4 +1,5 @@
 import * as jwt from 'jsonwebtoken';
+
 import { config } from '../config';
 
 export const generateToken = (id: number) => {

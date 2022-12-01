@@ -1,9 +1,12 @@
 import type { RequestHandler } from 'express';
 import * as jwt from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
-import type { User } from '../../db/entitys/User';
+
 import { config } from '../../config';
+
+import type { User } from '../../db/entitys/User';
 import { repositorys } from '../../db';
+
 import { customError } from '../../utils/customError';
 import errorsMessage from '../../utils/errorsMessage';
 

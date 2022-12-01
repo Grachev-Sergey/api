@@ -1,9 +1,11 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+
+import { repositorys } from '../../db';
 import type { User } from '../../db/entitys/User';
+
 import { customError } from '../../utils/customError';
 import errorsMessage from '../../utils/errorsMessage';
-import { repositorys } from '../../db';
 
 type ParamsType = {
   id: string;

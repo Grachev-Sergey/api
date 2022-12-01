@@ -1,6 +1,7 @@
 import type { RequestHandler } from 'express';
-import type { User } from '../../db/entitys/User';
+
 import { repositorys } from '../../db';
+import type { User } from '../../db/entitys/User';
 
 type ParamsType = Record<string, never>;
 

@@ -1,7 +1,9 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
+
 import type { Genre } from '../../db/entitys/Genre';
 import { repositorys } from '../../db';
+
 import { customError } from '../../utils/customError';
 
 type ParamsType = Record<string, never>;

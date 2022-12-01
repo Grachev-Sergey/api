@@ -1,7 +1,9 @@
 import { Entity, PrimaryGeneratedColumn, Column, AfterLoad, ManyToMany, JoinTable, OneToMany } from 'typeorm';
-import { addBookUrl } from '../../utils/addUrl';
+
 import { Comment } from './Comments';
 import { Genre } from './Genre';
+
+import { addBookUrl } from '../../utils/addUrl';
 
 @Entity()
 export class Book {
