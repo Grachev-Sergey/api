@@ -2,9 +2,9 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
-import { Favorite } from '../../db/entitys/Favorite';
+import { Favorite } from '../../db/entities/Favorite';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;

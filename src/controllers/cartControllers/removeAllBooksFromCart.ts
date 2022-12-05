@@ -3,7 +3,7 @@ import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;

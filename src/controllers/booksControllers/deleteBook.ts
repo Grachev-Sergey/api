@@ -4,11 +4,11 @@ import { StatusCodes } from 'http-status-codes';
 import { repositorys } from '../../db';
 
 import succsessMessage from '../../utils/succsessMessage';
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = {
-  id: string;
+  bookId: string;
 };
 
 type ResponseType = {
@@ -23,7 +23,7 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 
 export const deleteBook:HandlerType = async (req, res, next) => {
   try {
-    const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.id) });
+    const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.bookId) });
     if (!book) {
       throw customError(StatusCodes.NOT_FOUND, errorsMessage.BOOKS_NOT_FOUND);
     }

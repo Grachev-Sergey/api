@@ -1,15 +1,22 @@
 import { app } from './app';
 import { config } from './config';
+import { createServer } from 'http';
+import { Server } from 'socket.io';
 import succsessMessage from './utils/succsessMessage';
-import { AppDataSource } from './db/data-source';
+import { AppDataSource } from './db/dataSource';
 
-async function main() {
+(async () => {
   try {
-    await AppDataSource.initialize();
-    app.listen(config.serverPort);
+    const httpServer = createServer(app)
+    const io = new Server(httpServer);
+    httpServer.listen(config.serverPort);
     console.log(succsessMessage.LISTENING, config.serverPort);
+    io.on('connection', (socket) => {
+      // eslint-disable-next-line no-console
+      console.log(socket);
+    });
+    await AppDataSource.initialize();
   } catch (error) {
     console.log(error);
   }
-}
-main();
+})()

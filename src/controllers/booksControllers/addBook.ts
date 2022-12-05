@@ -2,7 +2,7 @@ import type { RequestHandler } from 'express';
 import { Any } from 'typeorm';
 
 import { repositorys } from '../../db';
-import { Book } from '../../db/entitys/Book';
+import { Book } from '../../db/entities/Book';
 
 import succsessMessage from '../../utils/succsessMessage';
 

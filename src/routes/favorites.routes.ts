@@ -2,10 +2,10 @@ import * as express from 'express';
 
 import favoritesControllers from '../controllers/favoritesControllers';
 
-import { tokenVerification } from '../middleware/tokenVerification';
+import { verifyToken } from '../middleware/verifyToken';
 
 const favoritesRouter = express.Router();
-favoritesRouter.use(tokenVerification);
+favoritesRouter.use(verifyToken);
 
 favoritesRouter.post('/', favoritesControllers.addToFavorites);
 favoritesRouter.delete('/', favoritesControllers.removeFromFavorites);

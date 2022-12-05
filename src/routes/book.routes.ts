@@ -4,11 +4,11 @@ import booksControllers from '../controllers/booksControllers';
 
 const bookRouter = express.Router();
 
-bookRouter.post('/addbook', booksControllers.addBook);
-bookRouter.get('/filtredBooks', booksControllers.getFiltredBooks);
+bookRouter.post('/add-book', booksControllers.addBook);
+bookRouter.get('/filtred-books', booksControllers.getFiltredBooks);
 bookRouter.get('/recommendations', booksControllers.getRecommendedBooks);
 bookRouter.get('/', booksControllers.getAllBooks);
-bookRouter.get('/:id', booksControllers.getOneBook);
-bookRouter.patch('/:id', booksControllers.updateBook);
-bookRouter.delete('/:id', booksControllers.deleteBook);
+bookRouter.get('/:bookId', booksControllers.getOneBook);
+bookRouter.patch('/:bookId', booksControllers.updateBook);
+bookRouter.delete('/:bookId', booksControllers.deleteBook);
 export { bookRouter };

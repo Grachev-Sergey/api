@@ -1,7 +1,7 @@
 import type { RequestHandler } from 'express';
 
 import { repositorys } from '../../db';
-import { Genre } from '../../db/entitys/Genre';
+import { Genre } from '../../db/entities/Genre';
 
 type ParamsType = Record<string, never>;
 

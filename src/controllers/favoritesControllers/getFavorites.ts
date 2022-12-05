@@ -1,10 +1,10 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import type { Favorite } from '../../db/entitys/Favorite';
+import type { Favorite } from '../../db/entities/Favorite';
 import { repositorys } from '../../db';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;

@@ -4,10 +4,10 @@ import { StatusCodes } from 'http-status-codes';
 
 import { config } from '../../config';
 
-import type { User } from '../../db/entitys/User';
+import type { User } from '../../db/entities/User';
 import { repositorys } from '../../db';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;

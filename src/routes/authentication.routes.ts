@@ -1,17 +1,14 @@
 import * as express from 'express';
 
-import { validationSchema } from '../middleware/validationSchema';
+import { applyValidationSchema } from '../middleware/applyValidationSchema';
 
 import authControllers from '../controllers/authControllers';
 
-import schema from '../schema';
+import schema from '../validationSchemas';
 
 const authenticationRouter = express.Router();
 
-authenticationRouter.post('/signup',
-  validationSchema(schema.registrationSchema),
-  authControllers.registrationUser);
-authenticationRouter.post('/login',
-  validationSchema(schema.authorizationSchema),
-  authControllers.login);
+authenticationRouter.post('/sign-up', applyValidationSchema(schema.signUpSchema), authControllers.signUp);
+authenticationRouter.post('/sign-in', applyValidationSchema(schema.signInSchema), authControllers.signIn);
+
 export { authenticationRouter };

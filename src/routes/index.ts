@@ -11,7 +11,7 @@ import { cartRouter } from './cart.routes';
 
 const router = express.Router();
 
-router.use('/', authenticationRouter);
+router.use('/auth', authenticationRouter);
 router.use('/user', userRouter);
 router.use('/book', bookRouter);
 router.use('/genres', genreRouter);

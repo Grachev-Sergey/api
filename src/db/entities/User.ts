@@ -4,38 +4,30 @@ import { Cart } from './Cart';
 import { Favorite } from './Favorite';
 import { Rating } from './Rating';
 
-import { addUserUrl } from '../../utils/addUrl';
+import { addUrl } from '../../utils/addUrl';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
-  @Column({
-    type: 'varchar',
-    nullable: true,
-  })
-    fullName: string;
+  @Column({ type: 'varchar', nullable: true })
+  fullName: string;
 
-  @Column({
-    unique: true,
-    type: 'varchar',
-    nullable: false,
-  })
-    email: string;
+  @Column({ unique: true, type: 'varchar', nullable: false })
+  email: string;
 
-  @Column({
-    select: false,
-    type: 'varchar',
-    nullable: false,
-  })
-    password: string;
+  @Column({ select: false, type: 'varchar', nullable: false })
+  password: string;
 
-  @Column({
-    type: 'varchar',
-    nullable: true,
-  })
-    avatar: string;
+  @Column({ type: 'varchar', nullable: true })
+  avatar: string;
+
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 
   @OneToMany(() => Rating, (rating) => rating.user)
   rating: Rating[];
@@ -46,14 +38,8 @@ export class User {
   @OneToMany(() => Cart, (cart) => cart.user)
   cart: Cart[];
 
-  @CreateDateColumn()
-    createdAt: Date;
-
-  @UpdateDateColumn()
-    updatedAt: Date;
-
   @AfterLoad()
   changingPathInResponse() {
-    this.avatar = addUserUrl(this.avatar);
+    this.avatar = addUrl(this.avatar, 'avatars');
   }
 }

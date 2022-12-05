@@ -1,6 +1,6 @@
 import type { RequestHandler } from 'express';
 
-import { Comment } from '../../db/entitys/Comments';
+import { Comment } from '../../db/entities/Comments';
 import { repositorys } from '../../db';
 
 type ParamsType = Record<string, never>;

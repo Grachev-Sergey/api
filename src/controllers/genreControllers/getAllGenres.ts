@@ -1,10 +1,10 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import type { Genre } from '../../db/entitys/Genre';
+import type { Genre } from '../../db/entities/Genre';
 import { repositorys } from '../../db';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 
 type ParamsType = Record<string, never>;
 

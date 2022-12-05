@@ -2,16 +2,16 @@ import * as express from 'express';
 
 import cartControllers from '../controllers/cartControllers';
 
-import { tokenVerification } from '../middleware/tokenVerification';
+import { verifyToken } from '../middleware/verifyToken';
 
 const cartRouter = express.Router();
-cartRouter.use(tokenVerification);
+cartRouter.use(verifyToken);
 
 cartRouter.post('/', cartControllers.addToCart);
 cartRouter.delete('/', cartControllers.removeBookFromCart);
 cartRouter.get('/', cartControllers.getBooksFromCart);
 cartRouter.delete('/all', cartControllers.removeAllBooksFromCart);
-cartRouter.patch('/addcopy/:id', cartControllers.addCopyToCart);
-cartRouter.patch('/removecopy/:id', cartControllers.removeCopyFromCart);
+cartRouter.patch('/add-copy/:bookId', cartControllers.addCopyToCart);
+cartRouter.patch('/remove-copy/:bookId', cartControllers.removeCopyFromCart);
 
 export { cartRouter };

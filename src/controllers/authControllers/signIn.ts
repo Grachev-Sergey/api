@@ -2,12 +2,12 @@ import type { RequestHandler } from 'express';
 import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 
-import type { User } from '../../db/entitys/User';
+import type { User } from '../../db/entities/User';
 import { repositorys } from '../../db';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
-import { generateToken } from '../../utils/tokenGenerator';
+import { generateToken } from '../../utils/generateToken';
 import succsessMessage from '../../utils/succsessMessage';
 
 type ParamsType = Record<string, never>;
@@ -27,7 +27,7 @@ type QueryType = Record<string, never>;
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
-export const login:HandlerType = async (req, res, next) => {
+export const signIn:HandlerType = async (req, res, next) => {
   try {
     const { email, password } = req.body;
 

@@ -1,12 +1,8 @@
 import * as dotenv from 'dotenv';
-import * as fs from 'fs';
-// import * as path from 'path';
+import * as path from 'path';
 
-// const localEnv = dotenv.parse(fs.readFileSync(path.resolve(`${__dirname}/../.env`)));
-// const defaultEnv = dotenv.parse(fs.readFileSync(path.resolve(`${__dirname}/../default.env`)));
-
-const localEnv = dotenv.parse(fs.readFileSync('.env'));
-const defaultEnv = dotenv.parse(fs.readFileSync('default.env'));
+const localEnv = dotenv.config({ path: path.normalize(`${__dirname}/../.env`) }).parsed;
+const defaultEnv = dotenv.config({ path: path.normalize(`${__dirname}/../default.env`) }).parsed;
 
 const combinedEnv = {
   ...localEnv,
@@ -18,6 +14,7 @@ dotenv.config();
 export const config = {
   serverPort: Number(combinedEnv.PORT),
   frontPort: Number(combinedEnv.FRONT),
+  baseUrl: combinedEnv.BASE_URL,
   db: {
     name: combinedEnv.DB_NAME,
     user: combinedEnv.DB_USER,
@@ -27,6 +24,6 @@ export const config = {
   },
   token: {
     secretKey: combinedEnv.TOKEN_SEKRET_KEY,
-    expiresIN: combinedEnv.TOKEN_EXPIRES_IN,
+    expiresIn: combinedEnv.TOKEN_EXPIRES_IN,
   },
 };

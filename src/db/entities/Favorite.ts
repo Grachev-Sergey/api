@@ -6,19 +6,19 @@ import { User } from './User';
 @Entity()
 export class Favorite {
   @PrimaryGeneratedColumn()
-    id: number;
+  id: number;
 
   @Column({ type: 'integer' })
-    bookId: number;
+  bookId: number;
 
   @Column({ type: 'integer' })
-    userId: number;
+  userId: number;
 
-  @ManyToOne(() => User)
-  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
-    user: User;
+  @ManyToOne(() => User, (user) => user.id)
+  @JoinColumn({ name: 'userId' })
+  user: User;
 
-  @ManyToOne(() => Book)
-  @JoinColumn({ name: 'bookId', referencedColumnName: 'id' })
-    book: Book;
+  @ManyToOne(() => Book, (book) => book.id)
+  @JoinColumn({ name: 'bookId' })
+  book: Book;
 }

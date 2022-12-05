@@ -2,10 +2,10 @@ import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
-import type { Book } from '../../db/entitys/Book';
-import type { Genre } from '../../db/entitys/Genre';
+import type { Book } from '../../db/entities/Book';
+import type { Genre } from '../../db/entities/Genre';
 
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
@@ -50,7 +50,7 @@ export const updateBook:HandlerType = async (req, res, next) => {
       status,
     } = req.body;
 
-    const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.id) });
+    const book = await repositorys.bookRepository.findOneBy({ id: Number(req.params.bookId) });
     if (!book) {
       throw customError(StatusCodes.BAD_REQUEST, errorsMessage.BOOK_NOT_FOUND);
     }

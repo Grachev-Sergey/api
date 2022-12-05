@@ -1,13 +1,13 @@
 import type { RequestHandler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 
-import type { Book } from '../../db/entitys/Book';
+import type { Book } from '../../db/entities/Book';
 import { repositorys } from '../../db';
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = {
-  id: string;
+  bookId: string;
 };
 
 type ResponseType = {
@@ -22,7 +22,7 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 
 export const getOneBook: HandlerType = async (req, res, next) => {
   try {
-    const bookId = Number(req.params.id);
+    const bookId = Number(req.params.bookId);
 
     const book = await repositorys.bookRepository
       .createQueryBuilder('book')

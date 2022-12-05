@@ -1,11 +1,11 @@
-import { authorizationSchema } from './authorizationSchema';
-import { registrationSchema } from './registrationSchema';
+import { signInSchema } from './signInSchema';
+import { signUpSchema } from './signUpSchema';
 import { updateUserInfoSchema } from './updateUserInfoSchema';
 import { updateUserPassSchema } from './updateUserPassSchema';
 
 export default {
-  authorizationSchema,
-  registrationSchema,
+  signInSchema,
+  signUpSchema,
   updateUserInfoSchema,
   updateUserPassSchema,
 };

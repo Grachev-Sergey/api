@@ -3,11 +3,11 @@ import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
-import { User } from '../../db/entitys/User';
+import { User } from '../../db/entities/User';
 
 import errorsMessage from '../../utils/errorsMessage';
-import { customError } from '../../utils/customError';
-import { generateToken } from '../../utils/tokenGenerator';
+import { customError } from '../../utils/createCustomError';
+import { generateToken } from '../../utils/generateToken';
 import succsessMessage from '../../utils/succsessMessage';
 
 type ParamsType = Record<string, never>;
@@ -27,7 +27,7 @@ type QueryType = Record<string, never>;
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
-export const registrationUser:HandlerType = async (req, res, next) => {
+export const signUp:HandlerType = async (req, res, next) => {
   try {
     const { email, password } = req.body;
     const checkUniq = await repositorys.userRepository.findOneBy({ email });

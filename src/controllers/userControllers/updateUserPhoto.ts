@@ -3,7 +3,7 @@ import * as fs from 'node:fs/promises';
 import * as Uuid from 'uuid';
 
 import { repositorys } from '../../db';
-import type { User } from '../../db/entitys/User';
+import type { User } from '../../db/entities/User';
 
 type ParamsType = Record<string, never>;
 
@@ -29,11 +29,11 @@ export const updateUserPhoto: HandlerType = async (req, res, next) => {
     const avatarType = avatar.split(';')[0].split('/')[1];
     const randomName = Uuid.v4();
     const avatarName = `${randomName}.${avatarType}`;
-    const route = `static/${avatarName}`;
+    const route = `static/avatars/${avatarName}`;
 
     if (user.avatar) {
       const oldName = user.avatar;
-      fs.unlink(`static/${oldName.slice(22)}`);
+      fs.unlink(`static/avatars/${oldName.slice(22)}`);
     }
     fs.writeFile(route, avatarData, { encoding: 'base64' });
 

@@ -2,10 +2,10 @@ import * as express from 'express';
 
 import { addComment } from '../controllers/commentsControllers/addComment';
 
-import { tokenVerification } from '../middleware/tokenVerification';
+import { verifyToken } from '../middleware/verifyToken';
 
 const commentsRouter = express.Router();
 
-commentsRouter.post('/add', tokenVerification, addComment);
+commentsRouter.post('/add', verifyToken, addComment);
 
 export { commentsRouter };

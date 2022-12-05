@@ -3,10 +3,10 @@ import * as bcrypt from 'bcryptjs';
 import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
-import type { User } from '../../db/entitys/User';
+import type { User } from '../../db/entities/User';
 
 import succsessMessage from '../../utils/succsessMessage';
-import { customError } from '../../utils/customError';
+import { customError } from '../../utils/createCustomError';
 import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
