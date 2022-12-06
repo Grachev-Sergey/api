@@ -32,6 +32,10 @@
    "scripts": {
       "start": "ts-node src/index.ts",
       "dev": "nodemon src/index.ts",
-      "typeorm": "typeorm-ts-node-commonjs"
+      "typeorm": "typeorm-ts-node-commonjs",
+      "typeorm-cli": "ts-node node_modules/typeorm/cli.js --dataSource src/db/dataSource.ts",
+      "db:sync": "npm run typeorm-cli -- migration:generate -p src/db/migrations/sync",
+      "db:migrate:up": "npm run typeorm-cli -- migration:run",
+      "db:migrate:down": "npm run typeorm-cli -- migration:revert"
    }
 }

@@ -8,19 +8,19 @@ export class Cart {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   bookId: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   userId: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   bookCover: string;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', nullable: false })
   price: number;
 
-  @Column({ type: 'real', default: 1 })
+  @Column({ type: 'real', nullable: false, default: 1 })
   numberOfCopies: number;
 
   @ManyToOne(() => User, (user) => user.id)

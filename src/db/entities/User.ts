@@ -11,6 +11,12 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
+
   @Column({ type: 'varchar', nullable: true })
   fullName: string;
 
@@ -22,12 +28,6 @@ export class User {
 
   @Column({ type: 'varchar', nullable: true })
   avatar: string;
-
-  @CreateDateColumn()
-  createdAt: Date;
-
-  @UpdateDateColumn()
-  updatedAt: Date;
 
   @OneToMany(() => Rating, (rating) => rating.user)
   rating: Rating[];

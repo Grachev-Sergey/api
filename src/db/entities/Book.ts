@@ -12,28 +12,28 @@ export class Book {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   cover: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   title: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   author: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   description: string;
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', nullable: false })
   dateOfIssue: string;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', nullable: false })
   hardCover: boolean;
 
   @Column({ type: 'float', nullable: true })
   hardCoverPrice: number;
 
-  @Column({ type: 'boolean' })
+  @Column({ type: 'boolean', nullable: false })
   paperback: boolean;
 
   @Column({ type: 'float', nullable: true })
@@ -42,7 +42,7 @@ export class Book {
   @Column({ type: 'varchar', nullable: true })
   status: string;
 
-  @Column({ type: 'float' })
+  @Column({ type: 'float', nullable: false })
   rating: number;
 
   @OneToMany(() => Comment, (comment) => comment.book)

@@ -8,17 +8,17 @@ export class Comment {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer' })
-  bookId: number;
-
-  @Column({ type: 'integer' })
-  userId: number;
-
-  @Column({ type: 'varchar' })
-  comment: string;
-
   @CreateDateColumn()
   createdAt: Date;
+
+  @Column({ type: 'integer', nullable: false })
+  bookId: number;
+
+  @Column({ type: 'integer', nullable: false })
+  userId: number;
+
+  @Column({ type: 'varchar', nullable: false })
+  comment: string;
 
   @ManyToOne(() => User, (user) => user.id)
   @JoinColumn({ name: 'userId' })

@@ -5,15 +5,15 @@ const localEnv = dotenv.config({ path: path.normalize(`${__dirname}/../.env`) })
 const defaultEnv = dotenv.config({ path: path.normalize(`${__dirname}/../default.env`) }).parsed;
 
 const combinedEnv = {
-  ...localEnv,
   ...defaultEnv,
+  ...localEnv,
 };
 
 dotenv.config();
 
 export const config = {
   serverPort: Number(combinedEnv.PORT),
-  frontPort: Number(combinedEnv.FRONT),
+  frontPort: Number(combinedEnv.FRONT_PORT),
   baseUrl: combinedEnv.BASE_URL,
   db: {
     name: combinedEnv.DB_NAME,

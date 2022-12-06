@@ -8,13 +8,13 @@ export class Rating {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   bookId: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   userId: number;
 
-  @Column({ type: 'real' })
+  @Column({ type: 'real', nullable: false })
   rating: number;
 
   @ManyToOne(() => User, (user) => user.id)

@@ -8,10 +8,10 @@ export class Favorite {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   bookId: number;
 
-  @Column({ type: 'integer' })
+  @Column({ type: 'integer', nullable: false })
   userId: number;
 
   @ManyToOne(() => User, (user) => user.id)

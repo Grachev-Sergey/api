@@ -4,4 +4,4 @@ src/index.ts
 node_modules/*
 build
 lock_node_version.js
-packages/shared/src/db/migrations/*
+src/db/migrations/*

@@ -15,12 +15,11 @@ export type UpdateUserPassType = typeof updateUserPassSchema;
 type SchemaType = AuthSchemaType | UpdateUserInfoType | UpdateUserPassType;
 
 export const applyValidationSchema = (schema: SchemaType): Handler => async (req, res, next) => {
-  const { query, params, body } = req;
+  const { body } = req;
+  const queryArr = Object.keys(req.query);
+  const paramsArr = Object.keys(req.params);
 
-  // eslint-disable-next-line no-console
-  console.log(query, params);
-
-  if (query || params) {
+  if (queryArr.length || paramsArr.length) {
     throw customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA);
   }
 
