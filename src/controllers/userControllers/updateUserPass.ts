@@ -32,6 +32,10 @@ export const updateUserPass: HandlerType = async (req, res, next) => {
     const userId = Number(req.body.userId);
     const user = await repositorys.userRepository.findOneBy({ id: userId });
 
+    if (!user) {
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
+    }
+
     const currentUserPass = await repositorys.userRepository
       .createQueryBuilder('user')
       .where('user.id = :userId', { userId })

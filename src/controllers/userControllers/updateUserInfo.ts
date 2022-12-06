@@ -1,7 +1,11 @@
 import type { RequestHandler } from 'express';
+import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
 import type { User } from '../../db/entities/User';
+
+import { customError } from '../../utils/createCustomError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -24,6 +28,11 @@ export const updateUserInfo: HandlerType = async (req, res, next) => {
     const { fullName, email, userId } = req.body;
 
     const user = await repositorys.userRepository.findOneBy({ id: userId });
+
+    if (!user) {
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
+    }
+
     user.fullName = fullName;
     user.email = email;
 

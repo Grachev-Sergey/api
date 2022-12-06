@@ -12,7 +12,6 @@ import { AppDataSource } from './db/dataSource';
     httpServer.listen(config.serverPort);
     console.log(succsessMessage.LISTENING, config.serverPort);
     io.on('connection', (socket) => {
-      // eslint-disable-next-line no-console
       console.log(socket);
     });
     await AppDataSource.initialize();

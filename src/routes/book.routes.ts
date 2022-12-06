@@ -1,14 +1,18 @@
 import * as express from 'express';
 
 import booksControllers from '../controllers/booksControllers';
+import { applyValidationSchema } from '../middleware/applyValidationSchema';
+import schema from '../validationSchemas';
 
 const bookRouter = express.Router();
 
-bookRouter.post('/add-book', booksControllers.addBook);
-bookRouter.get('/filtred-books', booksControllers.getFiltredBooks);
-bookRouter.get('/recommendations', booksControllers.getRecommendedBooks);
+// applyValidationSchema(schema.bookSchemas.getFiltredBooksSchema, 'query'),
+
 bookRouter.get('/', booksControllers.getAllBooks);
-bookRouter.get('/:bookId', booksControllers.getOneBook);
-bookRouter.patch('/:bookId', booksControllers.updateBook);
-bookRouter.delete('/:bookId', booksControllers.deleteBook);
+bookRouter.get('/filtred-books', booksControllers.getFiltredBooks);
+bookRouter.get('/recommendations', applyValidationSchema(schema.bookSchemas.getRecommendedBooksSchema, 'query'), booksControllers.getRecommendedBooks);
+bookRouter.post('/add-book', applyValidationSchema(schema.bookSchemas.addBookSchema, 'body'), booksControllers.addBook);
+bookRouter.get('/:bookId', applyValidationSchema(schema.bookSchemas.getOneBookSchema, 'params'), booksControllers.getOneBook);
+bookRouter.patch('/:bookId', applyValidationSchema(schema.bookSchemas.updateBookSchema, 'body'), booksControllers.updateBook);
+bookRouter.delete('/:bookId', applyValidationSchema(schema.bookSchemas.deleteBookSchema, 'params'), booksControllers.deleteBook);
 export { bookRouter };

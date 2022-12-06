@@ -12,9 +12,9 @@ userRouter.use(verifyToken);
 
 userRouter.get('/', userControllers.getUser);
 userRouter.get('/all', userControllers.getUsers);
-userRouter.patch('/change-info', applyValidationSchema(schema.updateUserInfoSchema), userControllers.updateUserInfo);
-userRouter.patch('/change-pass', applyValidationSchema(schema.updateUserPassSchema), userControllers.updateUserPass);
-userRouter.patch('/upload-photo', userControllers.updateUserPhoto);
-userRouter.delete('/:userId', userControllers.deleteUser);
+userRouter.patch('/change-info', applyValidationSchema(schema.updateUserSchema.updateUserInfoSchema, 'body'), userControllers.updateUserInfo);
+userRouter.patch('/change-pass', applyValidationSchema(schema.updateUserSchema.updateUserPassSchema, 'body'), userControllers.updateUserPass);
+userRouter.patch('/upload-photo', applyValidationSchema(schema.updateUserSchema.updateUserPhotoSchema, 'body'), userControllers.updateUserPhoto);
+userRouter.delete('/:userId', applyValidationSchema(schema.updateUserSchema.updateUserPhotoSchema, 'params'), userControllers.deleteUser);
 
 export { userRouter };

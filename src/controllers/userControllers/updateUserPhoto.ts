@@ -1,9 +1,13 @@
 import type { RequestHandler } from 'express';
 import * as fs from 'node:fs/promises';
 import * as Uuid from 'uuid';
+import { StatusCodes } from 'http-status-codes';
 
 import { repositorys } from '../../db';
 import type { User } from '../../db/entities/User';
+
+import { customError } from '../../utils/createCustomError';
+import errorsMessage from '../../utils/errorsMessage';
 
 type ParamsType = Record<string, never>;
 
@@ -25,6 +29,10 @@ export const updateUserPhoto: HandlerType = async (req, res, next) => {
     const { avatar, userId } = req.body;
     const user = await repositorys.userRepository.findOneBy({ id: userId });
 
+    if (!user) {
+      throw customError(StatusCodes.NOT_FOUND, errorsMessage.USER_NOT_FOUND);
+    }
+
     const avatarData = avatar.split('base64,')[1];
     const avatarType = avatar.split(';')[0].split('/')[1];
     const randomName = Uuid.v4();
@@ -33,7 +41,7 @@ export const updateUserPhoto: HandlerType = async (req, res, next) => {
 
     if (user.avatar) {
       const oldName = user.avatar;
-      fs.unlink(`static/avatars/${oldName.slice(22)}`);
+      fs.unlink(`static/${oldName.slice(22)}`);
     }
     fs.writeFile(route, avatarData, { encoding: 'base64' });
 

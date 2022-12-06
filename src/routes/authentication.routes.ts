@@ -8,7 +8,7 @@ import schema from '../validationSchemas';
 
 const authenticationRouter = express.Router();
 
-authenticationRouter.post('/sign-up', applyValidationSchema(schema.signUpSchema), authControllers.signUp);
-authenticationRouter.post('/sign-in', applyValidationSchema(schema.signInSchema), authControllers.signIn);
+authenticationRouter.post('/sign-up', applyValidationSchema(schema.authShema.signUpSchema, 'body'), authControllers.signUp);
+authenticationRouter.post('/sign-in', applyValidationSchema(schema.authShema.signInSchema, 'body'), authControllers.signIn);
 
 export { authenticationRouter };

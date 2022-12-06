@@ -1,11 +1,15 @@
-import { signInSchema } from './signInSchema';
-import { signUpSchema } from './signUpSchema';
-import { updateUserInfoSchema } from './updateUserInfoSchema';
-import { updateUserPassSchema } from './updateUserPassSchema';
+import authShema from './authShema';
+import updateUserSchema from './updateUserSchema';
+import bookSchemas from './bookSchemas';
+
+import type { AuthShemaType } from './authShema';
+import type { UpdateUserSchemaType } from './updateUserSchema';
+import type { BookSchemaType } from './bookSchemas';
 
 export default {
-  signInSchema,
-  signUpSchema,
-  updateUserInfoSchema,
-  updateUserPassSchema,
+  authShema,
+  updateUserSchema,
+  bookSchemas,
 };
+
+export type SchemaType = AuthShemaType | UpdateUserSchemaType | BookSchemaType;

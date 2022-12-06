@@ -2,36 +2,52 @@ import type { Handler } from 'express';
 import { StatusCodes } from 'http-status-codes';
 import * as yup from 'yup';
 
+import type { SchemaType } from '../validationSchemas';
+
 import { customError } from '../utils/createCustomError';
 import errorMessage from '../utils/errorsMessage';
-import type { signInSchema } from '../validationSchemas/signInSchema';
-import type { updateUserInfoSchema } from '../validationSchemas/updateUserInfoSchema';
-import type { updateUserPassSchema } from '../validationSchemas/updateUserPassSchema';
 
-export type AuthSchemaType = typeof signInSchema;
-export type UpdateUserInfoType = typeof updateUserInfoSchema;
-export type UpdateUserPassType = typeof updateUserPassSchema;
+export const applyValidationSchema = (schema: SchemaType, payloadType: string) => {
+  let payload;
+  const validate: Handler = async (req, res, next) => {
+    try {
+      if (payloadType === 'body') {
+        payload = req.body;
+        const queryArr = Object.keys(req.query);
+        const paramsArr = Object.keys(req.params);
 
-type SchemaType = AuthSchemaType | UpdateUserInfoType | UpdateUserPassType;
+        if (queryArr.length || paramsArr.length) {
+          throw customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA);
+        }
+      }
+      if (payloadType === 'query') {
+        payload = req.query;
+        const bodyArr = Object.keys(req.body);
+        const paramsArr = Object.keys(req.params);
 
-export const applyValidationSchema = (schema: SchemaType): Handler => async (req, res, next) => {
-  const { body } = req;
-  const queryArr = Object.keys(req.query);
-  const paramsArr = Object.keys(req.params);
+        if (bodyArr.length || paramsArr.length) {
+          throw customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA);
+        }
+      }
+      if (payloadType === 'params') {
+        payload = req.params;
+        const bodyArr = Object.keys(req.body);
+        const queryArr = Object.keys(req.query);
 
-  if (queryArr.length || paramsArr.length) {
-    throw customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA);
-  }
-
-  try {
-    await schema.validate(body);
-    next();
-  } catch (err) {
-    if (err instanceof yup.ValidationError) {
-      return next(
-        customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA),
-      );
+        if (bodyArr.length || queryArr.length) {
+          throw customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA);
+        }
+      }
+      await schema.validate(payload);
+      next();
+    } catch (err) {
+      if (err instanceof yup.ValidationError) {
+        return next(
+          customError(StatusCodes.BAD_REQUEST, errorMessage.INCORRECT_DATA),
+        );
+      }
+      next(err);
     }
-    next(err);
-  }
+  };
+  return validate;
 };
