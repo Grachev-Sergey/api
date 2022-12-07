@@ -4,15 +4,23 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import succsessMessage from './utils/succsessMessage';
 import { AppDataSource } from './db/dataSource';
+import { addCommentSoket, CommentDataType } from './controllers/commentsControllers/addCommentSoket';
 
 (async () => {
   try {
     const httpServer = createServer(app)
-    const io = new Server(httpServer);
+    const io = new Server(httpServer, {
+      cors: {
+        origin: `${config.frontUrl}`
+      }
+    });
     httpServer.listen(config.serverPort);
     console.log(succsessMessage.LISTENING, config.serverPort);
     io.on('connection', (socket) => {
-      console.log(socket);
+      socket.on('addComment', async (data) => {
+        const newComment = await addCommentSoket(data);
+        socket.broadcast.emit('addComment', newComment);
+      })
     });
     await AppDataSource.initialize();
   } catch (error) {

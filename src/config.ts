@@ -15,6 +15,7 @@ export const config = {
   serverPort: Number(combinedEnv.PORT),
   frontPort: Number(combinedEnv.FRONT_PORT),
   baseUrl: combinedEnv.BASE_URL,
+  frontUrl: combinedEnv.FRONT_URL,
   db: {
     name: combinedEnv.DB_NAME,
     user: combinedEnv.DB_USER,
