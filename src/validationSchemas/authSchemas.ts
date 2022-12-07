@@ -23,4 +23,4 @@ export default {
   signUpSchema,
 };
 
-export type AuthShemaType = typeof signInSchema | typeof signUpSchema;
+export type AuthSchemasType = typeof signInSchema | typeof signUpSchema;

@@ -1,14 +1,16 @@
 import * as express from 'express';
 
-import favoritesControllers from '../controllers/favoritesControllers';
-
+import { applyValidationSchema } from '../middleware/applyValidationSchema';
 import { verifyToken } from '../middleware/verifyToken';
+import schema from '../validationSchemas';
+
+import favoritesControllers from '../controllers/favoritesControllers';
 
 const favoritesRouter = express.Router();
 favoritesRouter.use(verifyToken);
 
-favoritesRouter.post('/', favoritesControllers.addToFavorites);
-favoritesRouter.delete('/', favoritesControllers.removeFromFavorites);
-favoritesRouter.get('/', favoritesControllers.getFavorites);
+favoritesRouter.get('/', applyValidationSchema(schema.favoritesSchemas.getFavoritesSchema, 'query'), favoritesControllers.getFavorites);
+favoritesRouter.post('/', applyValidationSchema(schema.favoritesSchemas.addToFavoritesSchema, 'body'), favoritesControllers.addToFavorites);
+favoritesRouter.delete('/', applyValidationSchema(schema.favoritesSchemas.removeFromFavoritesSchema, 'query'), favoritesControllers.removeFromFavorites);
 
 export { favoritesRouter };

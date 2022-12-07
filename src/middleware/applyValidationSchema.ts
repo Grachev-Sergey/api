@@ -8,9 +8,9 @@ import { customError } from '../utils/createCustomError';
 import errorMessage from '../utils/errorsMessage';
 
 export const applyValidationSchema = (schema: SchemaType, payloadType: string) => {
-  let payload;
   const validate: Handler = async (req, res, next) => {
     try {
+      let payload;
       if (payloadType === 'body') {
         payload = req.body;
         const queryArr = Object.keys(req.query);

@@ -20,11 +20,11 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 
 export const removeCopyFromCart:HandlerType = async (req, res, next) => {
   try {
-    const id = Number(req.params.bookId);
+    const bookId = Number(req.params.bookId);
 
     const foundCartElem = await repositorys.cartRepository
       .createQueryBuilder('cart')
-      .where('cart.id = :id', { id })
+      .where('cart.id = :bookId', { bookId })
       .getOne();
 
     if (!foundCartElem) {

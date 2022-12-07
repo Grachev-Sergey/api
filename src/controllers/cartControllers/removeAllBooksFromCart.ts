@@ -13,14 +13,14 @@ type ResponseType = Record<string, never>;
 type BodyType = Record<string, never>;
 
 type QueryType = {
-  userId: number;
+  userId: string;
 };
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
 export const removeAllBooksFromCart:HandlerType = async (req, res, next) => {
   try {
-    const { userId } = req.query;
+    const userId = Number(req.query.userId);
 
     const foundCart = await repositorys.cartRepository
       .createQueryBuilder('cart')

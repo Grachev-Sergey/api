@@ -1,11 +1,13 @@
 import * as express from 'express';
 
-import { changeRating } from '../controllers/ratingControllers/changeRating';
-
+import { applyValidationSchema } from '../middleware/applyValidationSchema';
+import schema from '../validationSchemas';
 import { verifyToken } from '../middleware/verifyToken';
+
+import { changeRating } from '../controllers/ratingControllers/changeRating';
 
 const ratingRouter = express.Router();
 
-ratingRouter.post('/', verifyToken, changeRating);
+ratingRouter.post('/', applyValidationSchema(schema.ratingSchemas.changeRatingSchema, 'body'), verifyToken, changeRating);
 
 export { ratingRouter };

@@ -15,10 +15,10 @@ type BodyType = Record<string, never>;
 
 type QueryType = {
   genre?: string;
-  minPrice?: number;
-  maxPrice?: number;
+  minPrice?: string;
+  maxPrice?: string;
   sorting?: string;
-  page?: number;
+  page?: string;
   search?: string;
 };
 
@@ -26,7 +26,10 @@ type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>
 
 export const getFiltredBooks: HandlerType = async (req, res, next) => {
   try {
-    const { genre, minPrice, maxPrice, sorting, page } = req.query;
+    const { genre, sorting } = req.query;
+    const minPrice = Number(req.query.minPrice);
+    const maxPrice = Number(req.query.maxPrice);
+    const page = Number(req.query.page);
     const search = `%${req.query.search}%`;
     const numberPerPage = 12;
 
@@ -59,7 +62,7 @@ export const getFiltredBooks: HandlerType = async (req, res, next) => {
     const counter = (await filtredBooks.getMany()).length;
     const books = await filtredBooks
       .take(numberPerPage)
-      .skip((page - 1) * numberPerPage)
+      .skip((+page - 1) * numberPerPage)
       .getMany();
     return res.json({ books, counter, numberPerPage });
   } catch (err) {

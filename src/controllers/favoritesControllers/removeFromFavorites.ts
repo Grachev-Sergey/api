@@ -15,15 +15,16 @@ type ResponseType = {
 type BodyType = Record<string, never>;
 
 type QueryType = {
-  userId: number;
-  bookId: number;
+  userId: string;
+  bookId: string;
 };
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
 export const removeFromFavorites:HandlerType = async (req, res, next) => {
   try {
-    const { userId, bookId } = req.query;
+    const userId = Number(req.query.userId);
+    const bookId = Number(req.query.bookId);
 
     const foundInFavorites = await repositorys.favoriteRepository
       .createQueryBuilder('favorite')

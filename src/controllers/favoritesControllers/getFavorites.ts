@@ -14,14 +14,14 @@ type ResponseType = Favorite[];
 type BodyType = Record<string, never>;
 
 type QueryType = {
-  userId: number;
+  userId: string;
 };
 
 type HandlerType = RequestHandler<ParamsType, ResponseType, BodyType, QueryType>;
 
 export const getFavorites:HandlerType = async (req, res, next) => {
   try {
-    const { userId } = req.query;
+    const userId = Number(req.query.userId);
 
     const favoriteBooks = await repositorys.favoriteRepository
       .createQueryBuilder('favorite')

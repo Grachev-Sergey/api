@@ -21,10 +21,10 @@ const deleteBookSchema = Yup.object({
 
 const getFiltredBooksSchema = Yup.object({
   genre: Yup.string(),
-  minPrice: Yup.number(),
-  maxPrice: Yup.number(),
-  sorting: Yup.string(),
-  page: Yup.number(),
+  minPrice: Yup.string().required('Indicate max price'),
+  maxPrice: Yup.string().required('Indicate max price'),
+  sorting: Yup.string().required('Indicate sorting type'),
+  page: Yup.string().required('Indicate number of page'),
   search: Yup.string(),
 });
 
