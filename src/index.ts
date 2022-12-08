@@ -4,7 +4,7 @@ import { createServer } from 'http';
 import { Server } from 'socket.io';
 import succsessMessage from './utils/succsessMessage';
 import { AppDataSource } from './db/dataSource';
-import { addCommentSoket, CommentDataType } from './controllers/commentsControllers/addCommentSoket';
+import { onConnection } from './socket/onConnection';
 
 (async () => {
   try {
@@ -16,12 +16,7 @@ import { addCommentSoket, CommentDataType } from './controllers/commentsControll
     });
     httpServer.listen(config.serverPort);
     console.log(succsessMessage.LISTENING, config.serverPort);
-    io.on('connection', (socket) => {
-      socket.on('addComment', async (data) => {
-        const newComment = await addCommentSoket(data);
-        socket.broadcast.emit('addComment', newComment);
-      })
-    });
+    io.on('connection', onConnection);
     await AppDataSource.initialize();
   } catch (error) {
     console.log(error);

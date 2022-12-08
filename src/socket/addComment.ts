@@ -1,5 +1,5 @@
-import { Comment } from '../../db/entities/Comments';
-import { repositorys } from '../../db';
+import { Comment } from '../db/entities/Comments';
+import { repositorys } from '../db';
 
 export type CommentDataType = {
   bookId?: number;
